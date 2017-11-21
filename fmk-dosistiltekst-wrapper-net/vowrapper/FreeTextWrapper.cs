@@ -12,7 +12,7 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
         public DateOrDateTimeWrapper EndDateOrDateTime { get; protected set; }
         public string Text { get; protected set; }
 
-        public static FreeTextWrapper makeFreeText(DateOrDateTimeWrapper startDateOrDateTime, DateOrDateTimeWrapper endDateOrDateTime, string text)
+        public static FreeTextWrapper MakeFreeText(DateOrDateTimeWrapper startDateOrDateTime, DateOrDateTimeWrapper endDateOrDateTime, string text)
         {
             return new FreeTextWrapper(startDateOrDateTime, endDateOrDateTime, text);
         }

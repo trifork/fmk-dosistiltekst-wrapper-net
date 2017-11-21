@@ -2511,6 +2511,9 @@ var DailyDosisCalculator = (function () {
             return DailyDosisCalculator.calculateAvg(structure.getSumOfDoses(), structure.getIterationInterval(), unitOrUnits);
     };
     DailyDosisCalculator.calculateAvg = function (sum, divisor, unitOrUnits) {
+		log("1: " + sum.maximum / divisor);
+		log("2: " + parseFloat(sum.maximum / divisor));
+		log("3: " + parseFloat(sum.maximum / divisor).toFixed(9));
         var avg = {
             minimum: parseFloat((sum.minimum / divisor).toFixed(9)),
             maximum: parseFloat((sum.maximum / divisor).toFixed(9))

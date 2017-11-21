@@ -10,10 +10,10 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
     {
    	    public static string LABEL = "kl.";  
 
-        private DateTime time;
+        private LocalTime time;
 
 	    private TimedDoseWrapper(
-            DateTime time,
+            LocalTime time,
 			double? doseQuantity, double? minimalDoseQuantity, double? maximalDoseQuantity, 
 			String doseQuantityString, String minimalDoseQuantityString, String maximalDoseQuantityString, 
 			bool isAccordingToNeed): base(doseQuantity, minimalDoseQuantity, maximalDoseQuantity, isAccordingToNeed) 
@@ -21,25 +21,29 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 		    this.time = time;
         }
 
-	    public static TimedDoseWrapper makeDose(DateTime time, double? quantity, bool isAccordingToNeed) {
+        public static TimedDoseWrapper MakeDose(LocalTime time, double? quantity, bool isAccordingToNeed)
+        {
 		    if(IsZero(quantity))
 			    return null;
 		    return new TimedDoseWrapper(time, quantity, null, null, null, null, null, isAccordingToNeed);
 	    }
 
-	    public static TimedDoseWrapper makeDose(DateTime time, double? quantity, String supplText, bool isAccordingToNeed) {
+        public static TimedDoseWrapper MakeDose(LocalTime time, double? quantity, String supplText, bool isAccordingToNeed)
+        {
 		    if(IsZero(quantity))
 			    return null;
 		    return new TimedDoseWrapper(time, quantity, null, null, supplText, null, null, isAccordingToNeed);
 	    }
-	
-	    public static TimedDoseWrapper makeDose(DateTime time, double? minimalQuantity, double? maximalQuantity, bool isAccordingToNeed) {
+
+        public static TimedDoseWrapper MakeDose(LocalTime time, double? minimalQuantity, double? maximalQuantity, bool isAccordingToNeed)
+        {
 		    if(IsZero(minimalQuantity, maximalQuantity))
 			    return null;
 		    return new TimedDoseWrapper(time, null, minimalQuantity, maximalQuantity, null, null, null, isAccordingToNeed);
-	    }	
+	    }
 
-	    public static TimedDoseWrapper makeDose(DateTime time, double? minimalQuantity, double? maximalQuantity, String minimalSupplText, String maximalSupplText, bool isAccordingToNeed) {
+        public static TimedDoseWrapper MakeDose(LocalTime time, double? minimalQuantity, double? maximalQuantity, String minimalSupplText, String maximalSupplText, bool isAccordingToNeed)
+        {
 		    if(IsZero(minimalQuantity, maximalQuantity))
 			    return null;
 		    return new TimedDoseWrapper(time, null, minimalQuantity, maximalQuantity, null, minimalSupplText, maximalSupplText, isAccordingToNeed);
@@ -51,7 +55,7 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
         }
 
 	    public string GetTime() {
-		    return time.ToString("HH:mm:ss");
+            return time.ToString();
 	    }
 
         public override bool TheSameAs(DoseWrapper other)

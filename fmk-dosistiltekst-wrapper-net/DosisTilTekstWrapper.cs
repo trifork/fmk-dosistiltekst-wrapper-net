@@ -36,6 +36,7 @@ namespace fmk_dosistiltekst_wrapper_net
         private static JsValue dailyDosisCalculator = null;
         private static JsValue dosageTypeFunc = null;
         private static JsValue dosageType144Func = null;
+        private static JsValue combinedTextConverterFunc = null;
         private static Engine engine = null;
 
         public static void Initialize(StreamReader reader)
@@ -110,6 +111,13 @@ namespace fmk_dosistiltekst_wrapper_net
                 throw new InvalidDataException("JS object 'DosageTypeCalculator144' or function 'calculateStr' not found. Is the supplied reader streaming a correct dosistiltekst.js file?");
             }
 
+            combinedTextConverterFunc = dosisTilTekstJS.Get("CombinedTextConverter").AsObject().Get("convertStr");
+            if (combinedTextConverterFunc == null || combinedTextConverterFunc.IsNull())
+            {
+                throw new InvalidDataException("JS object 'CombinedTextConverter' or function 'convertStr' not found. Is the supplied reader streaming a correct dosistiltekst.js file?");
+            }
+
+
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings()
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
@@ -166,6 +174,19 @@ namespace fmk_dosistiltekst_wrapper_net
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
             var res = shortTextConverterFunc.Invoke(shortTextConverter, new[] { new JsValue(json) });
+            return res.AsString();
+        }
+
+        public static string ConvertShortText(DosageWrapper dosage, int maxLength)
+        {
+            if (shortTextConverterFunc == null)
+            {
+                throw new Exception("Initialize must be called before calling other methods");
+            }
+
+            string json = "(unset)";
+            json = JsonConvert.SerializeObject(dosage);
+            var res = shortTextConverterFunc.Invoke(shortTextConverter, new[] { new JsValue(json), new JsValue(maxLength) });
             return res.AsString();
         }
 
@@ -247,6 +268,35 @@ namespace fmk_dosistiltekst_wrapper_net
             }
         }
 
+        public static DosageTranslationCombined ConvertCombined(DosageWrapper dosage) {
+		
+		    if(combinedTextConverterFunc == null) {
+			    throw new Exception("DosisTilTekstWrapper not initialized - call initialize() method before invoking any of the methods");
+		    }
+				
+		    String json = "(unset)";
+		    json = JsonConvert.SerializeObject(dosage);
+             var res = combinedTextConverterFunc.Invoke(new JsValue(json));
+
+		
+		    if(res.IsNull()) {
+			    return new DosageTranslationCombined(new DosageTranslation(null, null, new DailyDosis()), new List<DosageTranslation>());
+		    }
+		
+		    var combinedShortText = res.AsObject().Get("combinedShortText").AsString();
+		    var combinedLongText = res.AsObject().Get("combinedLongText").AsString();
+		
+		    var combinedDD = GetDailyDosisFromJS(res.AsObject().Get("combinedDailyDosis").AsObject());
+		    var  periodTextArray = res.AsObject().Get("periodTexts").AsArray();
+		    var translations = new List<DosageTranslation>();
+            for (int i = 0; i < periodTextArray.GetLength(); i++)
+            {
+                var periodTexts = periodTextArray.Get(i.ToString()).AsArray();
+                translations.Add(new DosageTranslation(periodTexts.Get("0").AsString(), periodTexts.Get("1").AsString(), GetDailyDosisFromJS(periodTexts.Get("2").AsObject())));
+            }
+		    return new DosageTranslationCombined(new DosageTranslation(combinedShortText, combinedLongText, combinedDD), translations);
+	}
+
         public static DailyDosis CalculateDailyDosis(DosageWrapper dosage)
         {
             if (dailyDosisCalculator == null)
@@ -280,7 +330,7 @@ namespace fmk_dosistiltekst_wrapper_net
 			    unitWrapper = UnitOrUnitsWrapper.MakeUnits(unitOrUnits.AsObject().Get("unitSingular").AsString(), unitOrUnits.AsObject().Get("unitPlural").AsString());
 		    }
 		    var value = dailyDosisObject.Get("value");
-		    if(value != null && !value.IsNull()) {
+		    if(value != null && !value.IsNull() && !value.IsUndefined()) {
             
 			    return new DailyDosis(value.AsNumber(), unitWrapper);
 		    }

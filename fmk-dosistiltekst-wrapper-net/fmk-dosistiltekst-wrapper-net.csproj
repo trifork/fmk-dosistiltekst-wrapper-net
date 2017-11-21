@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DosageTranslation.cs" />
+    <Compile Include="DosageTranslationCombined.cs" />
     <Compile Include="DosageType.cs" />
     <Compile Include="DailyDosis.cs" />
     <Compile Include="DateSerializer.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="vowrapper\DosageWrapper.cs" />
     <Compile Include="vowrapper\DoseWrapper.cs" />
     <Compile Include="vowrapper\Interval.cs" />
+    <Compile Include="vowrapper\LocalTime.cs" />
     <Compile Include="vowrapper\PlainDoseWrapper.cs" />
     <Compile Include="vowrapper\FreeTextWrapper.cs" />
     <Compile Include="vowrapper\NightDoseWrapper.cs" />

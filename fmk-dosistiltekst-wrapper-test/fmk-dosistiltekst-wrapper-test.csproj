@@ -52,7 +52,39 @@
   <ItemGroup>
     <Compile Include="AbstractDosageWrapperTest.cs" />
     <Compile Include="DosageProposalTest.cs" />
+    <Compile Include="DosageProposalXMLGeneratorTest.cs" />
+    <Compile Include="DosageTypeCalculator144Test.cs" />
+    <Compile Include="DosageTypeCalculatorTest.cs" />
+    <Compile Include="DosageWrapperTest.cs" />
     <Compile Include="ns2009\DailyRepeatedConverterTest.cs" />
+    <Compile Include="ns2009\LimitedNumberOfDaysConverterTest.cs" />
+    <Compile Include="ns2009\LongTextComplexConverterTest.cs" />
+    <Compile Include="ns2009\LongTextConverterTest.cs" />
+    <Compile Include="ns2009\MorningNoonEveningNightAndAccordingToNeedConverterTest.cs" />
+    <Compile Include="ns2009\MorningNoonEveningNightConverterTest.cs" />
+    <Compile Include="ns2009\MorningNoonEveningNightInNDaysConverterTest.cs" />
+    <Compile Include="ns2009\NumberOfWholeWeeksConverterTest.cs" />
+    <Compile Include="ns2009\ParacetamolConverterTest.cs" />
+    <Compile Include="ns2009\RepeatedConverterTest.cs" />
+    <Compile Include="ns2009\SimpleAccordingToNeedConverterTest.cs" />
+    <Compile Include="ns2009\SimpleLimitedAccordingToNeedConverterTest.cs" />
+    <Compile Include="ns2009\SimpleNonRepeatedConverterTest.cs" />
+    <Compile Include="ns2009\TwoDaysRepeatedConverterTest.cs" />
+    <Compile Include="ns2009\ValidatorTest.cs" />
+    <Compile Include="ns2009\WeeklyMorningNoonEveningNightConverterTest.cs" />
+    <Compile Include="ns2009\WeeklyRepeatedConverterTest.cs" />
+    <Compile Include="ns20120601\DailyRepeatedConverterTest.cs" />
+    <Compile Include="ns20120601\DayInWeekConverterTest.cs" />
+    <Compile Include="ns20120601\LimitedNumberOfDaysConverterTest.cs" />
+    <Compile Include="ns20120601\LongTextComplexConverterTest.cs" />
+    <Compile Include="ns20120601\MorningNoonEveningNightConverterTest.cs" />
+    <Compile Include="ns20120601\MorningNoonEveningNightEyeOrEarConverterTest.cs" />
+    <Compile Include="ns20120601\MorningNoonEveningNightInNDaysConverterTest.cs" />
+    <Compile Include="ns20120601\RepeatedConverterTest.cs" />
+    <Compile Include="ns20120601\RepeatedEyeOrEarConverterTest.cs" />
+    <Compile Include="ns20120601\SimpleAccordingToNeedConverterTest.cs" />
+    <Compile Include="ns20120601\SimpleLimitedAccordingToNeedConverterTest.cs" />
+    <Compile Include="ns20130601\MultiplePeriodesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ns20120601\CombinedTwoPeriodesConverterTest.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
