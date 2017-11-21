@@ -963,6 +963,12 @@ var ShortTextConverter = (function () {
     ShortTextConverter.prototype.getConverterClassName = function (dosageJson) {
         return this.getConverterClassNameWrapper(__WEBPACK_IMPORTED_MODULE_19__vowrapper_DosageWrapper__["a" /* DosageWrapper */].fromJsonObject(dosageJson));
     };
+    ShortTextConverter.prototype.getConverterClassNameStr = function (jsonStr) {
+        if (jsonStr === undefined || jsonStr === null) {
+            return null;
+        }
+        return this.getConverterClassName(JSON.parse(jsonStr));
+    };
     ShortTextConverter.prototype.getConverterClassNameWrapper = function (dosage) {
         for (var _i = 0, _a = ShortTextConverter._converters; _i < _a.length; _i++) {
             var converter = _a[_i];
@@ -1230,6 +1236,12 @@ var LongTextConverter = (function () {
     } */
     LongTextConverter.prototype.getConverterClassName = function (dosageJson) {
         return this.getConverterClassNameWrapper(__WEBPACK_IMPORTED_MODULE_0__vowrapper_DosageWrapper__["a" /* DosageWrapper */].fromJsonObject(dosageJson));
+    };
+    LongTextConverter.prototype.getConverterClassNameStr = function (jsonStr) {
+        if (jsonStr === undefined || jsonStr === null) {
+            return null;
+        }
+        return this.getConverterClassName(JSON.parse(jsonStr));
     };
     LongTextConverter.prototype.getConverterClassNameWrapper = function (dosage) {
         for (var _i = 0, _a = LongTextConverter._converters; _i < _a.length; _i++) {

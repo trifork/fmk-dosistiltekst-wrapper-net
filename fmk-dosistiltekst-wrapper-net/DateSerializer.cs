@@ -19,7 +19,7 @@ namespace fmk_dosistiltekst_wrapper_net
         private long GetEpoch(DateTime d)
         {
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return (long)(d.ToUniversalTime() - epoch).TotalSeconds;
+            return (long)(d.ToUniversalTime() - epoch).TotalMilliseconds;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

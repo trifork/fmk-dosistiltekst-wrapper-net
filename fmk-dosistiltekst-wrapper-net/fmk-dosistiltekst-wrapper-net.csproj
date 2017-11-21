@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DosageType.cs" />
+    <Compile Include="DailyDosis.cs" />
     <Compile Include="DateSerializer.cs" />
     <Compile Include="DosageProposalResult.cs" />
     <Compile Include="DosisTilTekstWrapper.cs" />

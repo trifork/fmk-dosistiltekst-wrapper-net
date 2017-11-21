@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace fmk_dosistiltekst_wrapper_test
 {
-    
-    public abstract class AbstractDosageWrapperTest
+
+    public abstract class AbstractDosageWrapperTest : DosisTilTekstWrapper
     {
     
         [SetUp]
