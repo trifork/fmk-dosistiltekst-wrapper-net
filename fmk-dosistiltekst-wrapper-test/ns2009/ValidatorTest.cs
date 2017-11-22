@@ -45,10 +45,10 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                         1,
                         MorningDoseWrapper.MakeDose(2.0),
                         EveningDoseWrapper.MakeDose(0.0)))));
-            StructureWrapper s = dosage.Structures.Structures.GetEnumerator().Current;
+            StructureWrapper s = dosage.Structures.Structures.Min;
             Assert.AreEqual(
                     1,
-                    s.Days.GetEnumerator().Current.NumberOfDoses);
+                    s.Days.Min.NumberOfDoses);
             Assert.AreEqual(
                     "Doseringsforløbet starter fredag den 13. april 2012 kl. 20:06 og gentages hver dag:\n" +
                     "   Doseringsforløb:\n" +
@@ -78,10 +78,8 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                             1,
                             PlainDoseWrapper.MakeDose(2.0, true),
                             PlainDoseWrapper.MakeDose(0.0, true)))));
-            StructureWrapper s = dosage.Structures.Structures.GetEnumerator().Current;
-            Assert.AreEqual(
-                    1,
-                    s.Days.GetEnumerator().Current.AccordingToNeedDoses.Count);
+            StructureWrapper s = dosage.Structures.Structures.Min;
+            Assert.AreEqual(1, s.Days.Min.AccordingToNeedDoses.Count);
             Assert.AreEqual(
                     "Doseringsforløbet starter fredag den 13. april 2012 kl. 20:06 og gentages hver dag:\n" +
                     "   Doseringsforløb:\n" +

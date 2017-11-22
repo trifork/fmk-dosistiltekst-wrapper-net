@@ -20,7 +20,7 @@ namespace fmk_dosistiltekst_wrapper_test
                     "   Doseringsforløb:\n" +
                     "   1 tablet efter behov højst 1 gang daglig, tages med rigeligt vand", res.LongText);
             Assert.AreEqual("1 tablet efter behov, højst 1 gang daglig, tages med rigeligt vand", res.ShortText);
-            Assert.AreEqual("<m16:Dosage xsi:schemaLocation=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../2015/06/01/DosageForRequest.xsd\" xmlns:m16=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><m16:UnitTexts source=\"Doseringsforslag\"><m16:Singular>tablet</m16:Singular><m16:Plural>tabletter</m16:Plural></m16:UnitTexts><m16:StructuresAccordingToNeed><m16:Structure><m16:IterationgetInterval>1</m16:IterationgetInterval><m16:StartDate>2017-05-17</m16:StartDate><m16:EndDate>2017-06-01</m16:EndDate><m16:SupplementaryText>, tages med rigeligt vand</m16:SupplementaryText><m16:Day><m16:Number>1</m16:Number><m16:Dose><m16:Quantity>1</m16:Quantity></m16:Dose></m16:Day></m16:Structure></m16:StructuresAccordingToNeed></m16:Dosage>", res.XmlSnippet);
+            Assert.AreEqual("<m16:Dosage xsi:schemaLocation=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../2015/06/01/DosageForRequest.xsd\" xmlns:m16=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><m16:UnitTexts source=\"Doseringsforslag\"><m16:Singular>tablet</m16:Singular><m16:Plural>tabletter</m16:Plural></m16:UnitTexts><m16:StructuresAccordingToNeed><m16:Structure><m16:IterationInterval>1</m16:IterationInterval><m16:StartDate>2017-05-17</m16:StartDate><m16:EndDate>2017-06-01</m16:EndDate><m16:SupplementaryText>, tages med rigeligt vand</m16:SupplementaryText><m16:Day><m16:Number>1</m16:Number><m16:Dose><m16:Quantity>1</m16:Quantity></m16:Dose></m16:Day></m16:Structure></m16:StructuresAccordingToNeed></m16:Dosage>", res.XmlSnippet);
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace fmk_dosistiltekst_wrapper_test
                     "</m16:UnitTexts>" +
                     "<m16:StructuresFixed>" +
                     "<m16:Structure>" +
-                    "<m16:IterationgetInterval>1</m16:IterationgetInterval>" +
+                    "<m16:IterationInterval>1</m16:IterationInterval>" +
                     "<m16:StartDate>2010-01-01</m16:StartDate>" +
                     "<m16:EndDate>2010-01-31</m16:EndDate>" +
                     "<m16:SupplementaryText>tages med rigeligt vand</m16:SupplementaryText>" +
@@ -66,7 +66,7 @@ namespace fmk_dosistiltekst_wrapper_test
                     "</m16:Day>" +
                     "</m16:Structure>" +
                     "<m16:Structure>" +
-                    "<m16:IterationgetInterval>1</m16:IterationgetInterval>" +
+                    "<m16:IterationInterval>1</m16:IterationInterval>" +
                     "<m16:StartDate>2010-03-01</m16:StartDate>" +
                     "<m16:EndDate>2010-03-31</m16:EndDate>" +
                     "<m16:SupplementaryText>tages med rigeligt vand</m16:SupplementaryText>" +
@@ -78,7 +78,7 @@ namespace fmk_dosistiltekst_wrapper_test
                     "</m16:StructuresFixed>" +
                     "<m16:StructuresAccordingToNeed>" +
                     "<m16:Structure>" +
-                    "<m16:IterationgetInterval>2</m16:IterationgetInterval>" +
+                    "<m16:IterationInterval>2</m16:IterationInterval>" +
                     "<m16:StartDate>2010-02-01</m16:StartDate>" +
                     "<m16:EndDate>2010-02-28</m16:EndDate>" +
                     "<m16:SupplementaryText>tages med rigeligt vand</m16:SupplementaryText>" +

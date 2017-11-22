@@ -160,8 +160,17 @@ namespace fmk_dosistiltekst_wrapper_net
 
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
-            var res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
-            return res.AsString();
+            JsValue res = null;
+            try
+            {
+                res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
+            }
+            catch(Exception e)
+            {
+                int i = 0;
+            }
+
+            return res.IsNull() ? null : res.AsString();
         }
 
         public static string ConvertShortText(DosageWrapper dosage)
@@ -174,7 +183,8 @@ namespace fmk_dosistiltekst_wrapper_net
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
             var res = shortTextConverterFunc.Invoke(shortTextConverter, new[] { new JsValue(json) });
-            return res.AsString();
+
+            return res.IsNull() ? null : res.AsString();
         }
 
         public static string ConvertShortText(DosageWrapper dosage, int maxLength)
@@ -187,7 +197,7 @@ namespace fmk_dosistiltekst_wrapper_net
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
             var res = shortTextConverterFunc.Invoke(shortTextConverter, new[] { new JsValue(json), new JsValue(maxLength) });
-            return res.AsString();
+            return res.IsNull() ? null : res.AsString();
         }
 
         /// <summary>
@@ -205,7 +215,7 @@ namespace fmk_dosistiltekst_wrapper_net
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
             var res = longTextConverterClassNameFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
-            return res.AsString();
+            return res.IsNull() ? null : res.AsString();
         }
 
         /// <summary>
@@ -223,7 +233,7 @@ namespace fmk_dosistiltekst_wrapper_net
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
             var res = shortTextConverterClassNameFunc.Invoke(shortTextConverter, new[] { new JsValue(json) });
-            return res.AsString();
+            return res.IsNull() ? null : res.AsString();
         }
 
 
@@ -323,7 +333,8 @@ namespace fmk_dosistiltekst_wrapper_net
 			    return new DailyDosis();
 		    }
 		    UnitOrUnitsWrapper unitWrapper;
-		    if(unitOrUnits.AsObject().Get("unit") != null) {
+            var unit = unitOrUnits.AsObject().Get("unit");
+		    if(unit != null && unit.IsString()) {
 			    unitWrapper = UnitOrUnitsWrapper.MakeUnit(unitOrUnits.AsObject().Get("unit").AsString());
 		    }
 		    else {

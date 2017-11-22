@@ -8,9 +8,9 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 {
     public class TimedDoseWrapper: DoseWrapper
     {
-   	    public static string LABEL = "kl.";  
+   	    public static string LABEL = "kl.";
 
-        private LocalTime time;
+        public LocalTime Time { get; protected set; }
 
 	    private TimedDoseWrapper(
             LocalTime time,
@@ -18,7 +18,7 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 			String doseQuantityString, String minimalDoseQuantityString, String maximalDoseQuantityString, 
 			bool isAccordingToNeed): base(doseQuantity, minimalDoseQuantity, maximalDoseQuantity, isAccordingToNeed) 
         {
-		    this.time = time;
+		    this.Time = time;
         }
 
         public static TimedDoseWrapper MakeDose(LocalTime time, double? quantity, bool isAccordingToNeed)
@@ -55,7 +55,7 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
         }
 
 	    public string GetTime() {
-            return time.ToString();
+            return Time.ToString();
 	    }
 
         public override bool TheSameAs(DoseWrapper other)
