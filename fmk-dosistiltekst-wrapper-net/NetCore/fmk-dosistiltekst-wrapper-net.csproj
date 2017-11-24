@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+ <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3"  />
+    <PackageReference Include="Jint" Version="2.11.23" />
+    
+  </ItemGroup>
+  
+    <ItemGroup>
+        <Compile Include="../*.cs"/>
+        <Compile Include="../vowrapper/*.cs"/>
+    </ItemGroup>
+</Project>

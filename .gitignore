@@ -17,3 +17,8 @@ fmk-dosistiltekst-wrapper-net/packages/NUnit.Console.3.7.0/NUnit.Console.3.7.0.n
 fmk-dosistiltekst-wrapper-net/packages/NUnit.Extension.VSProjectLoader.3.5.0/NUnit.Extension.VSProjectLoader.3.5.0.nupkg
 fmk-dosistiltekst-wrapper-net/packages/NUnit.Extension.TeamCityEventListener.1.0.2/NUnit.Extension.TeamCityEventListener.1.0.2.nupkg
 fmk-dosistiltekst-wrapper-net/packages/NUnit.Extension.TeamCityEventListener.1.0.2/LICENSE.txt
+fmk-dosistiltekst-wrapper-net/NetCore/bin/
+fmk-dosistiltekst-wrapper-net/NetCore/obj/
+fmk-dosistiltekst-wrapper-test/NetCore/bin/
+fmk-dosistiltekst-wrapper-test/NetCore/obj/
+fmk-dosistiltekst-wrapper-net/packages/
