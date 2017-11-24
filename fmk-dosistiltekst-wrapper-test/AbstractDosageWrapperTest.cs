@@ -17,10 +17,13 @@ namespace fmk_dosistiltekst_wrapper_test
         public void Init()
         {
             
-            var filename = TestContext.CurrentContext.WorkDirectory + "\\dosistiltekst.js";
+            // Jenkins path
+            var filename = TestContext.CurrentContext.WorkDirectory + "\\..\\..\\fmk-dosis-til-tekst-ts\\workspace\\target\\dosistiltekst.js";
             if (!File.Exists(filename))
             {
-                filename = "c:\\Projects\\fmk-dosistiltekst-wrapper-net\\fmk-dosistiltekst-wrapper-test\\dosistiltekst.js";
+                
+                // Local devel path
+                filename = "\\projects\\fmk-dosis-til-tekst-ts\\target\\dosistiltekst.js";
             }
             DosisTilTekstWrapper.Initialize(File.OpenText(filename));
         }

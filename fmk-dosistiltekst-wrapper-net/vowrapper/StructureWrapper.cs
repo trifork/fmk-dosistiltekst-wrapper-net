@@ -23,8 +23,16 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 	    private bool? areAllDosesTheSame;
 	    private List<DayWrapper> daysAsList;
 
-        private static IComparer<DayWrapper> dayComparer = Comparer<DayWrapper>.Create((o1, o2) => o1.DayNumber - o2.DayNumber);
-	
+        private class DayComparer : IComparer<DayWrapper>
+        {
+            int IComparer<DayWrapper>.Compare(DayWrapper d1, DayWrapper d2)
+            {
+                return d1.DayNumber - d2.DayNumber;
+            }
+        }
+
+        static DayComparer dayComparer = new DayComparer();
+
 	    /**
 	     * Factory metod to create structured dosages
 	     */

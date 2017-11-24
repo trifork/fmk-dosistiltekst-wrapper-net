@@ -11,16 +11,21 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
         public UnitOrUnitsWrapper UnitOrUnits { get; protected set; }
         public SortedSet<StructureWrapper> Structures { get; protected set; }
 
-        private static IComparer<StructureWrapper> structureComparer = Comparer<StructureWrapper>.Create((o1, o2) =>
+        private class StructureComparer : IComparer<StructureWrapper>
         {
-            int i = o1.StartDateOrDateTime.GetDateOrDateTime().CompareTo(o2.StartDateOrDateTime.GetDateOrDateTime());
-            if (i != 0)
-                return i;
-            if (o1.ContainsAccordingToNeedDosesOnly())
-                return 1;
-            else
-                return -1;
-        });
+            int IComparer<StructureWrapper>.Compare(StructureWrapper o1, StructureWrapper o2)
+            {
+                int i = o1.StartDateOrDateTime.GetDateOrDateTime().CompareTo(o2.StartDateOrDateTime.GetDateOrDateTime());
+                if (i != 0)
+                    return i;
+                if (o1.ContainsAccordingToNeedDosesOnly())
+                    return 1;
+                else
+                    return -1;
+            }
+        }
+
+        static StructureComparer structureComparer = new StructureComparer();
 
 
         public static StructuresWrapper MakeStructures(UnitOrUnitsWrapper unitOrUnits, params StructureWrapper[] structures)
