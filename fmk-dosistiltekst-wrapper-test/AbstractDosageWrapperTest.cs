@@ -18,7 +18,7 @@ namespace fmk_dosistiltekst_wrapper_test
         {
             
             // Jenkins path
-            var filename = TestContext.CurrentContext.WorkDirectory + "\\..\\..\\fmk-dosis-til-tekst-ts\\workspace\\target\\dosistiltekst.js";
+            var filename = TestContext.CurrentContext.WorkDirectory + "\\..\\..\\..\\..\\..\\..\\fmk-dosis-til-tekst-ts\\workspace\\target\\dosistiltekst.js";
             if (!File.Exists(filename))
             {
                 
