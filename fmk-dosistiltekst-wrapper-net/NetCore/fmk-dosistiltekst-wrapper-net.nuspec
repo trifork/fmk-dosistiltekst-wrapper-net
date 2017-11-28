@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FMKDosisTilTekstWrapper</id>
+    <version>1.0.0</version>
+    <title>Fælles Medicinkort: dosis-til-tekst wrapper for .NET</title>
+    <authors>faellesmedicinkort</authors>
+    <projectUrl>http://wiki.fmk.netic.dk/doku.php</projectUrl>
+    <iconUrl>http://wiki.fmk.netic.dk/lib/exe/fetch.php?media=wiki:logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Dosis-til-tekst-wrapper er en komponent der, givet en doseringsstruktur, kan generere hhv. korte- lange doseringstekster. Desuden kan der genereres xml-doseringsforslag samt beregnes doseringstyper. Komponenten er en del af Sundhedsdatastyrelsens Fælles Medicinkort projekt.</description>
+    <releaseNotes>Første publicering.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>FMK dosistiltekst</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="10.0.3" />
+      <dependency id="Jint" version="2.11.23" />
+    </dependencies>
+  </metadata>
+    <files>
+        <file src="bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib" />
+    </files>
+</package>

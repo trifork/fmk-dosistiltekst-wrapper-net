@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("fmk-dosistiltekst-wrapper-net")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(".NET wrapper for the fmk-dosistiltekst-ts javascript component")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Sundhedsdatastyrelsen")]
 [assembly: AssemblyProduct("fmk-dosistiltekst-wrapper-net")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
