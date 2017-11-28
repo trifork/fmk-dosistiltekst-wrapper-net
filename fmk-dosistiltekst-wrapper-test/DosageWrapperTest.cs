@@ -147,5 +147,31 @@ namespace fmk_dosistiltekst_wrapper_test
                     "   Doseringsforløb:\n" +
                     "   Bare tag rigeligt", combined.CombinedTranslation.LongText);
         }
+
+        [Test]
+        public void testREADMEExampleCode()
+        {
+            DosageWrapper dosage = DosageWrapper.MakeDosage(
+                StructuresWrapper.MakeStructures(
+                    UnitOrUnitsWrapper.MakeUnits("tablet", "tabletter"), 
+                    StructureWrapper.MakeStructure(1, "ved måltid", DateOrDateTimeWrapper.MakeDate("2011-01-01"), DateOrDateTimeWrapper.MakeDate("2011-01-30"), 
+                        DayWrapper.MakeDay(1, PlainDoseWrapper.MakeDose(1.0), 
+                            PlainDoseWrapper.MakeDose(1.0), 
+                            PlainDoseWrapper.MakeDose(1.0, true)
+                        )
+                    )
+                )
+            );
+  
+            string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
+            string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
+            DailyDosis daily = DosisTilTekstWrapper.CalculateDailyDosis(dosage);
+            DosageType dosageType = DosisTilTekstWrapper.GetDosageType(dosage);
+
+            Console.WriteLine(longText);
+            Console.WriteLine(shortText);
+            Console.WriteLine(daily);
+            Console.WriteLine(dosageType);
+        }
     }
 }
