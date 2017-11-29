@@ -569,7 +569,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 
             Assert.AreEqual("Doseringsforløbet starter fredag den 7. februar 2014 kl. 07:19, forløbet gentages efter 42 dage:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Fredag den 7. februar 2014: 1 stk middag + 1 stk før sengetid", DosisTilTekstWrapper.ConvertLongText(dosage));
+                    "   Fredag den 7. februar 2014: 1 stk middag + 1 stk nat", DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage)); // does not have a short text translation
             Assert.AreEqual(
                     0.047619048,

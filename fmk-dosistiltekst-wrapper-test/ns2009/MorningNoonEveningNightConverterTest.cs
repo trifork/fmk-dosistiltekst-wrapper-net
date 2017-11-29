@@ -47,13 +47,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   1 stk morgen ! + 2 stk middag ! + 3 stk aften ! + 4 stk før sengetid !",
+                "   1 stk morgen ! + 2 stk middag ! + 3 stk aften ! + 4 stk nat !",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "MorningNoonEveningNightConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 stk morgen, 2 stk middag, 3 stk aften og 4 stk før sengetid !",
+                "1 stk morgen, 2 stk middag, 3 stk aften og 4 stk nat !",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                 10.0,
@@ -79,13 +79,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   2 stk morgen ved måltid + 2 stk middag ved måltid + 2 stk aften ved måltid + 2 stk før sengetid ved måltid",
+                "   2 stk morgen ved måltid + 2 stk middag ved måltid + 2 stk aften ved måltid + 2 stk nat ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "MorningNoonEveningNightConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "2 stk morgen, middag, aften og før sengetid ved måltid",
+                "2 stk morgen, middag, aften og nat ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -110,13 +110,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   2 stk middag ved måltid + 3 stk aften ved måltid + 4 stk før sengetid ved måltid",
+                "   2 stk middag ved måltid + 3 stk aften ved måltid + 4 stk nat ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "MorningNoonEveningNightConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "2 stk middag, 3 stk aften og 4 stk før sengetid ved måltid",
+                "2 stk middag, 3 stk aften og 4 stk nat ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     9.0,
@@ -261,13 +261,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   1 dråbe aften + 1 dråbe før sengetid",
+                "   1 dråbe aften + 1 dråbe nat",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 dråbe aften og før sengetid",
+                "1 dråbe aften og nat",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     2.0,
@@ -290,13 +290,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   1 dråbe før sengetid",
+                "   1 dråbe nat",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 dråbe før sengetid",
+                "1 dråbe nat",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     1.0,
@@ -319,13 +319,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   400 milligram før sengetid",
+                "   400 milligram nat",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "400 milligram før sengetid",
+                "400 milligram nat",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     400.0,
@@ -448,8 +448,8 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 
             string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            Assert.AreEqual("1 tablet morgen, 1 tablet før sengetid efter behov", shortText);
-            Assert.IsTrue(longText.Contains("1 tablet morgen + 1 tablet før sengetid efter behov"));
+            Assert.AreEqual("1 tablet morgen, 1 tablet nat efter behov", shortText);
+            Assert.IsTrue(longText.Contains("1 tablet morgen + 1 tablet nat efter behov"));
         }
 
         [Test]
@@ -470,8 +470,8 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 
             string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            Assert.AreEqual("1 tablet morgen efter behov, 1 tablet før sengetid", shortText);
-            Assert.IsTrue(longText.Contains("1 tablet morgen efter behov + 1 tablet før sengetid"));
+            Assert.AreEqual("1 tablet morgen efter behov, 1 tablet nat", shortText);
+            Assert.IsTrue(longText.Contains("1 tablet morgen efter behov + 1 tablet nat"));
         }
 
 
@@ -493,7 +493,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 
             string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            Assert.IsNull(shortText); // Skulle have været "1 tablet morgen efter behov, 1 tablet middag efter behov, 1 tablet aften efter behov, 1 tablet før sengetid efter behov" men for lang    
+            Assert.IsNull(shortText); // Skulle have været "1 tablet morgen efter behov, 1 tablet middag efter behov, 1 tablet aften efter behov, 1 tablet nat efter behov" men for lang    
         }
 
         [Test]
@@ -514,7 +514,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 
             string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            Assert.AreEqual("1 tablet morgen, middag, aften og før sengetid", shortText);
+            Assert.AreEqual("1 tablet morgen, middag, aften og nat", shortText);
         }
 
 
@@ -537,8 +537,8 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 
             string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            Assert.AreEqual("1 tablet morgen, 2 tabletter før sengetid efter behov", shortText);
-            Assert.IsTrue(longText.Contains("1 tablet morgen + 2 tabletter før sengetid efter behov"));
+            Assert.AreEqual("1 tablet morgen, 2 tabletter nat efter behov", shortText);
+            Assert.IsTrue(longText.Contains("1 tablet morgen + 2 tabletter nat efter behov"));
 
         }
     }

@@ -9,7 +9,7 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
     public class NightDoseWrapper: DoseWrapper 
     {
 
-       	public const String LABEL = "før sengetid";  
+       	public const String LABEL = "nat";  
         	
 	    private NightDoseWrapper(
 			double? doseQuantity, double? minimalDoseQuantity, double? maximalDoseQuantity, 
