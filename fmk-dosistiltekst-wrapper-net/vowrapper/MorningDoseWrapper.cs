@@ -8,9 +8,6 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 {
     public class MorningDoseWrapper: DoseWrapper 
     {
-
-       	public const String LABEL = "morgen";  
-        	
 	    private MorningDoseWrapper(
 			double? doseQuantity, double? minimalDoseQuantity, double? maximalDoseQuantity, 
 			string doseQuantityString, string minimalDoseQuantityString, string maximalDoseQuantityString, 
@@ -52,10 +49,5 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 			    return null;
 		    return new MorningDoseWrapper(null, minimalQuantity, maximalQuantity, null, null, null, isAccordingToNeed);
 	    }	
-	
-	    public override string Label 
-        {
-            get { return LABEL; }
-	    }
     }
 }

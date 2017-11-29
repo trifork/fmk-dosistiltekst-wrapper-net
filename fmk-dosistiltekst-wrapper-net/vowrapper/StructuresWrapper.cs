@@ -9,80 +9,25 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
     public class StructuresWrapper
     {
         public UnitOrUnitsWrapper UnitOrUnits { get; protected set; }
-        public SortedSet<StructureWrapper> Structures { get; protected set; }
-
-        private class StructureComparer : IComparer<StructureWrapper>
-        {
-            int IComparer<StructureWrapper>.Compare(StructureWrapper o1, StructureWrapper o2)
-            {
-                int i = o1.StartDateOrDateTime.GetDateOrDateTime().CompareTo(o2.StartDateOrDateTime.GetDateOrDateTime());
-                if (i != 0)
-                    return i;
-                if (o1.ContainsAccordingToNeedDosesOnly())
-                    return 1;
-                else
-                    return -1;
-            }
-        }
-
-        static StructureComparer structureComparer = new StructureComparer();
-
+        public ICollection<StructureWrapper> Structures { get; protected set; }
 
         public static StructuresWrapper MakeStructures(UnitOrUnitsWrapper unitOrUnits, params StructureWrapper[] structures)
         {
-            var set = new SortedSet<StructureWrapper>(structures, structureComparer);
+            var set = new LinkedList<StructureWrapper>(structures);
             return new StructuresWrapper(unitOrUnits, set);
         }
 
-        public static StructuresWrapper MakeStructures(UnitOrUnitsWrapper unitOrUnits, IEnumerable<StructureWrapper> structures)
+        public static StructuresWrapper MakeStructures(UnitOrUnitsWrapper unitOrUnits, ICollection<StructureWrapper> structures)
         {
-            return new StructuresWrapper(unitOrUnits, (SortedSet<StructureWrapper>)structures);
+            return new StructuresWrapper(unitOrUnits, structures);
         }
 
-        private StructuresWrapper(UnitOrUnitsWrapper unitOrUnits, SortedSet<StructureWrapper> structures)
+        private StructuresWrapper(UnitOrUnitsWrapper unitOrUnits, ICollection<StructureWrapper> structures)
         {
             this.UnitOrUnits = unitOrUnits;
             if (structures == null || structures.Count == 0)
                 throw new ArgumentException();
             this.Structures = structures;
-        }
-
-        public bool HasOverlappingPeriodes()
-        {
-            var ss = new List<StructureWrapper>(Structures);
-            for (int i = 0; i < ss.Count; i++)
-            {
-                for (int j = i + 1; j < ss.Count; j++)
-                {
-                    var dis = ss[i].StartDateOrDateTime;
-                    var die = ss[i].EndDateOrDateTime;
-                    var djs = ss[j].StartDateOrDateTime;
-                    var dje = ss[j].EndDateOrDateTime;
-                    if (Overlaps(dis, die, djs, dje))
-                        return true;
-                }
-            }
-            return false;
-        }
-
-        private bool Overlaps(DateOrDateTimeWrapper dd1Start, DateOrDateTimeWrapper dd1End, DateOrDateTimeWrapper dd2Start, DateOrDateTimeWrapper dd2End)
-        {
-            var dt1Start = MakeStart(dd1Start);
-            var dt2Start = MakeStart(dd2Start);
-            if (dt1Start == dt2Start)
-            {
-                return true;
-            }
-            var dt1End = MakeEnd(dd1End);
-            var dt2End = MakeEnd(dd2End);
-            if (dt1Start < dt2Start)
-            {
-                return dt1End > dt2End;
-            }
-            else
-            {
-                return dt2End > dt1End;
-            }
         }
 
         private DateTime MakeStart(DateOrDateTimeWrapper dd)

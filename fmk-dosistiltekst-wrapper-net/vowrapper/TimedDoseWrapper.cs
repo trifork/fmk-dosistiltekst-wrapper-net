@@ -8,8 +8,6 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 {
     public class TimedDoseWrapper: DoseWrapper
     {
-   	    public static string LABEL = "kl.";
-
         public LocalTime Time { get; protected set; }
 
 	    private TimedDoseWrapper(
@@ -49,22 +47,8 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 		    return new TimedDoseWrapper(time, null, minimalQuantity, maximalQuantity, null, minimalSupplText, maximalSupplText, isAccordingToNeed);
 	    }
 
-        public override string Label
-        {
-            get { return LABEL; }
-        }
-
 	    public string GetTime() {
             return Time.ToString();
-	    }
-
-        public override bool TheSameAs(DoseWrapper other)
-        {
-		    if(!(other is TimedDoseWrapper))
-			    return false;
-		    if(!base.TheSameAs(other))
-			    return false;
-		    return GetTime() == ((TimedDoseWrapper)other).GetTime();
 	    }
     }
 }

@@ -8,9 +8,6 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 {
     public class EveningDoseWrapper: DoseWrapper 
     {
-
-       	public const String LABEL = "aften";  
-        	
 	    private EveningDoseWrapper(
 			double? doseQuantity, double? minimalDoseQuantity, double? maximalDoseQuantity, 
 			string doseQuantityString, string minimalDoseQuantityString, string maximalDoseQuantityString, 
@@ -52,11 +49,5 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
 			    return null;
 		    return new EveningDoseWrapper(null, minimalQuantity, maximalQuantity, null, null, null, isAccordingToNeed);
 	    }
-
-        public override string Label
-        {
-            get { return LABEL; }
-        }
     }
-
 }

@@ -46,8 +46,6 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
                 return Trim(number.Substring(0, number.Length - 1));
         }
 
-        abstract public string Label { get; }
-
         protected static bool IsZero(double? quantity)
         {
             if (!quantity.HasValue)
@@ -59,40 +57,6 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
         protected static bool IsZero(double? minimalQuantity, double? maximalQuantity)
         {
             return !minimalQuantity.HasValue && !maximalQuantity.HasValue;
-        }
-
-
-        public string GetAnyDoseQuantityString()
-        {
-            if (DoseQuantityString != null)
-                return DoseQuantityString;
-            else
-                return MinimalDoseQuantityString + "-" + MaximalDoseQuantityString;
-        }
-
-        public virtual bool TheSameAs(DoseWrapper other)
-        {
-            if (Label != other.Label)
-                return false;
-            if (IsAccordingToNeed != other.IsAccordingToNeed)
-                return false;
-            if (!equalsWhereNullsAreTrue(MinimalDoseQuantityString, other.MinimalDoseQuantityString))
-                return false;
-            if (!equalsWhereNullsAreTrue(MaximalDoseQuantityString, other.MaximalDoseQuantityString))
-                return false;
-            if (!equalsWhereNullsAreTrue(DoseQuantityString, other.DoseQuantityString))
-                return false;
-            return true;
-        }
-
-        private bool equalsWhereNullsAreTrue(Object a, Object b)
-        {
-            if (a == null && b == null)
-                return true;
-            else if ((a == null && b != null) || (a != null && b == null))
-                return false;
-            else
-                return a.ToString() == b.ToString();
         }
 
         [JsonProperty(PropertyName="type")]

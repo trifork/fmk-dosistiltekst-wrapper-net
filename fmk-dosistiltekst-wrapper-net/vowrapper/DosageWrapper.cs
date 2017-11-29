@@ -35,24 +35,5 @@ namespace fmk_dosistiltekst_wrapper_net.vowrapper
             this.FreeText = freeText;
             this.Structures = structures;
         }
-
-        
-        /// <returns>true if the dosage is "according to schema..."</returns>
-        public bool IsAdministrationAccordingToSchema()
-        {
-            return AdministrationAccordingToSchema != null;
-        }
-
-        /// <returns>true if the dosage is a free text dosage</returns>
-        public bool IsFreeText()
-        {
-            return FreeText != null;
-        }
-
-        /// <returns>true if the dosage is structured</returns>
-        public bool IsStructured()
-        {
-            return Structures != null;
-        }
     }
 }
