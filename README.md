@@ -32,6 +32,7 @@ DosageWrapper dosage = DosageWrapper.MakeDosage(
   
 string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
 string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
+string mediumText = DosisTilTekstWrapper.ConvertShortText(dosage, 200);
 DailyDosis daily = DosisTilTekstWrapper.CalculateDailyDosis(dosage);
 DosageType dosageType = DosisTilTekstWrapper.GetDosageType(dosage);
 ```
