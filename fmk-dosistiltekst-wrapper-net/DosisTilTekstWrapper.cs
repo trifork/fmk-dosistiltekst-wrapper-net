@@ -160,16 +160,7 @@ namespace fmk_dosistiltekst_wrapper_net
 
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage);
-            JsValue res = null;
-            try
-            {
-                res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
-            }
-            catch(Exception e)
-            {
-                int i = 0;
-            }
-
+            JsValue res = res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
             return res.IsNull() ? null : res.AsString();
         }
 

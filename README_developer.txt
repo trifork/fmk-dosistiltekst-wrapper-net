@@ -12,9 +12,10 @@ Kør tests:
  dotnet test
 
 Byg nuget pakke (fmk-dosistiltekst-wrapper-net\NetCore\bin\Debug\FMKDosisTilTekstWrapper.1.0.0.nupkg):
+ cd fmk-dosistiltekst-wrapper-net\NetCore
  dotnet pack /p:NuspecFile=fmk-dosistiltekst-wrapper-net.nuspec
  
  
 Publicer på nuget.org (se api-key på https://wall.trifork.com/display/fmk/Dosis-til-tekst - VIGTIGT! API-KEY MÅ IKKE COMMIT'TES TIL GITHUB!):
- dotnet nuget push bin\Debug\FMKDosisTilTekstWrapper.1.0.0.nupkg -k <api-key>
+ dotnet nuget push bin\Debug\FMKDosisTilTekstWrapper.X.X.X.nupkg -s nuget.org -k <api-key>
 

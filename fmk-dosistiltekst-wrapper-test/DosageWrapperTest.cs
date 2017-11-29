@@ -167,11 +167,42 @@ namespace fmk_dosistiltekst_wrapper_test
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
             DailyDosis daily = DosisTilTekstWrapper.CalculateDailyDosis(dosage);
             DosageType dosageType = DosisTilTekstWrapper.GetDosageType(dosage);
+        }
 
-            Console.WriteLine(longText);
-            Console.WriteLine(shortText);
-            Console.WriteLine(daily);
-            Console.WriteLine(dosageType);
+         [Test]
+        public void testShortTextToLong()
+        {
+            DosageWrapper dosage = DosageWrapper.MakeDosage(
+                StructuresWrapper.MakeStructures(
+                    UnitOrUnitsWrapper.MakeUnit("stk"),
+                    StructureWrapper.MakeStructure(
+                        7, "en meget, meget, meget laaaang supplerende tekst", DateOrDateTimeWrapper.MakeDate("2012-06-08"), DateOrDateTimeWrapper.MakeDate("2012-12-31"),
+                        DayWrapper.MakeDay(
+                            1,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            3,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            5,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            7,
+                            PlainDoseWrapper.MakeDose(1.0)))));
+            Assert.AreEqual(
+                    "WeeklyRepeatedConverterImpl",
+                    DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
+            Assert.AreEqual(
+                    "Doseringsforløbet starter fredag den 8. juni 2012, forløbet gentages hver uge, og ophører mandag den 31. december 2012.\n" +
+                    "Bemærk at doseringen har et komplekst forløb:\n" +
+                    "   Doseringsforløb:\n" +
+                    "   Tirsdag: 1 stk en meget, meget, meget laaaang supplerende tekst\n" +
+                    "   Torsdag: 1 stk en meget, meget, meget laaaang supplerende tekst\n" +
+                    "   Fredag: 1 stk en meget, meget, meget laaaang supplerende tekst\n" +
+                    "   Søndag: 1 stk en meget, meget, meget laaaang supplerende tekst",
+                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            Assert.AreEqual("1 stk tirsdag, torsdag, fredag og søndag hver uge en meget, meget, meget laaaang supplerende tekst", DosisTilTekstWrapper.ConvertShortText(dosage, 300));
+            Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
         }
     }
 }
