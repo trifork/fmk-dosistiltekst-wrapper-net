@@ -59,4 +59,13 @@ Eksempel på anvendelse med flere doseringsperioder:
         new [] { new DateTime(2010, 1, 1), new DateTime(2010, 2, 1), new DateTime(2010, 3, 1) },
         new[] { new DateTime(2010, 1, 31), new DateTime(2010, 2, 28), new DateTime(2010, 3, 31) },
         FMKVersion.FMK146, 1);
+```		
+
+Eksempel på anvendelse med flere doseringsperioder og med længere kort doseringstekst end FMK-snitfladens sædvanlige 70 karakterer:
+```C#
+ DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("{M+M+A+N}{PN}{N daglig}", "{1}{2}{1}",
+        "{1+2+3+4}{dag 1: 2 dag 2: 3}{2}", "tablet", "tabletter", "tages med rigeligt vand",
+        new [] { new DateTime(2010, 1, 1), new DateTime(2010, 2, 1), new DateTime(2010, 3, 1) },
+        new[] { new DateTime(2010, 1, 31), new DateTime(2010, 2, 28), new DateTime(2010, 3, 31) },
+        FMKVersion.FMK146, 1, 10000);
 ```				

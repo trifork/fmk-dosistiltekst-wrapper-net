@@ -2,15 +2,15 @@
 <package >
   <metadata>
     <id>FMKDosisTilTekstWrapper</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Fælles Medicinkort: dosis-til-tekst wrapper for .NET</title>
     <authors>faellesmedicinkort</authors>
     <projectUrl>http://wiki.fmk.netic.dk/doku.php</projectUrl>
     <iconUrl>http://wiki.fmk.netic.dk/lib/exe/fetch.php?media=wiki:logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Dosis-til-tekst-wrapper er en komponent der, givet en doseringsstruktur, kan generere hhv. korte- lange doseringstekster. Desuden kan der genereres xml-doseringsforslag samt beregnes doseringstyper. Komponenten er en del af Sundhedsdatastyrelsens Fælles Medicinkort projekt.</description>
-    <releaseNotes>Minor bugfix, longtextconverter failed silently</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <releaseNotes>Added optional shortTextMaxLength to DosageProposalXMLGenerator.GetDosageProposalResult()</releaseNotes>
+    <copyright>Copyright 2018</copyright>
     <tags>FMK dosistiltekst</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="10.0.3" />

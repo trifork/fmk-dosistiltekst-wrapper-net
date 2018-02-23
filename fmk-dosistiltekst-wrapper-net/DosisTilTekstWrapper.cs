@@ -127,19 +127,34 @@ namespace fmk_dosistiltekst_wrapper_net
             };
         }
 
-        public static DosageProposalResult GetDosageProposalResult(string type, string iteration, string mapping, string unitTextSingular, string unitTextPlural, string supplementaryText, IEnumerable<DateTime> beginDates, IEnumerable<DateTime> endDates, FMKVersion version, int dosageProposalVersion)
+        public static DosageProposalResult GetDosageProposalResult(string type, string iteration, string mapping, string unitTextSingular, string unitTextPlural, string supplementaryText, IEnumerable<DateTime> beginDates, IEnumerable<DateTime> endDates, FMKVersion version, int dosageProposalVersion, int? shortTextMaxLength = null)
         {
             if(generateXMLSnippetFunc == null)
             {
                 throw new Exception("Initialize must be called before calling other methods");
             }
 
-            var result = generateXMLSnippetFunc.Invoke(type, iteration, mapping, unitTextSingular, unitTextPlural, supplementaryText, 
+            ObjectInstance result;
+            
+            if(shortTextMaxLength.HasValue) {
+                result = generateXMLSnippetFunc.Invoke(type, iteration, mapping, unitTextSingular, unitTextPlural, supplementaryText, 
+                    engine.Array.Construct(beginDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
+                    engine.Array.Construct(endDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
+                    version.ToString(), 
+                    DosageProposalVersionNo,
+                    shortTextMaxLength.Value)
+                .AsObject();
+            }
+            else 
+            {
+                result = generateXMLSnippetFunc.Invoke(type, iteration, mapping, unitTextSingular, unitTextPlural, supplementaryText, 
                     engine.Array.Construct(beginDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
                     engine.Array.Construct(endDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
                     version.ToString(), 
                     DosageProposalVersionNo)
                 .AsObject();
+            }
+             
 
             
             return new DosageProposalResult()
