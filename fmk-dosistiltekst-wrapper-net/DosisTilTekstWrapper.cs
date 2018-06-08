@@ -127,7 +127,7 @@ namespace fmk_dosistiltekst_wrapper_net
             };
         }
 
-        public static DosageProposalResult GetDosageProposalResult(string type, string iteration, string mapping, string unitTextSingular, string unitTextPlural, string supplementaryText, IEnumerable<DateTime> beginDates, IEnumerable<DateTime> endDates, FMKVersion version, int dosageProposalVersion, int? shortTextMaxLength = null)
+        public static DosageProposalResult GetDosageProposalResult(string type, string iteration, string mapping, string unitTextSingular, string unitTextPlural, string supplementaryText, IEnumerable<DateTime> beginDates, IEnumerable<DateTime?> endDates, FMKVersion version, int dosageProposalVersion, int? shortTextMaxLength = null)
         {
             if(generateXMLSnippetFunc == null)
             {
@@ -138,8 +138,8 @@ namespace fmk_dosistiltekst_wrapper_net
             
             if(shortTextMaxLength.HasValue) {
                 result = generateXMLSnippetFunc.Invoke(type, iteration, mapping, unitTextSingular, unitTextPlural, supplementaryText, 
-                    engine.Array.Construct(beginDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
-                    engine.Array.Construct(endDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
+                    engine.Array.Construct(beginDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()),
+                    engine.Array.Construct(endDates.Select(d => (JsValue)(d.HasValue ? engine.Date.Construct(d.Value) : Jint.Native.Undefined.Instance)).ToArray()), 
                     version.ToString(), 
                     DosageProposalVersionNo,
                     shortTextMaxLength.Value)
@@ -148,8 +148,8 @@ namespace fmk_dosistiltekst_wrapper_net
             else 
             {
                 result = generateXMLSnippetFunc.Invoke(type, iteration, mapping, unitTextSingular, unitTextPlural, supplementaryText, 
-                    engine.Array.Construct(beginDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
-                    engine.Array.Construct(endDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()), 
+                    engine.Array.Construct(beginDates.Select(d => (JsValue)engine.Date.Construct(d)).ToArray()),
+                    engine.Array.Construct(endDates.Select(d => (JsValue)(d.HasValue ? engine.Date.Construct(d.Value) : Jint.Native.Undefined.Instance)).ToArray()), 
                     version.ToString(), 
                     DosageProposalVersionNo)
                 .AsObject();

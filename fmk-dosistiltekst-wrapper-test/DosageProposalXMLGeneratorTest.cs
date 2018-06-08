@@ -13,7 +13,7 @@ namespace fmk_dosistiltekst_wrapper_test
         [Test]
         public void testBasic()
         {
-            DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", ", tages med rigeligt vand", new [] { new DateTime(2017,5,17) }, new [] { new DateTime(2017,6,1)}, FMKVersion.FMK146, 1);
+            DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", ", tages med rigeligt vand", new [] { new DateTime(2017,5,17) }, new [] { new DateTime?(new DateTime(2017,6,1)) }, FMKVersion.FMK146, 1);
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.LongText);
             Assert.AreEqual("Doseringsforløbet starter onsdag den 17. maj 2017, gentages hver dag, og ophører torsdag den 1. juni 2017:\n" +
@@ -26,7 +26,7 @@ namespace fmk_dosistiltekst_wrapper_test
          [Test]
         public void testBasicWithLongerShortText()
         {
-            DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", ", tages med rigeligt vand OG NOGET MERE SOM GØR DEN KORTE DOSERINGSTEKST NOGET LÆNGERE END DE SÆDVANLIGE 70 KARAKTERER", new [] { new DateTime(2017,5,17) }, new [] { new DateTime(2017,6,1)}, FMKVersion.FMK146, 1, 10000);
+            DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", ", tages med rigeligt vand OG NOGET MERE SOM GØR DEN KORTE DOSERINGSTEKST NOGET LÆNGERE END DE SÆDVANLIGE 70 KARAKTERER", new [] { new DateTime(2017,5,17) }, new [] { new DateTime?(new DateTime(2017,6,1)) }, FMKVersion.FMK146, 1, 10000);
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.LongText);
             Assert.AreEqual("Doseringsforløbet starter onsdag den 17. maj 2017, gentages hver dag, og ophører torsdag den 1. juni 2017:\n" +
@@ -43,7 +43,7 @@ namespace fmk_dosistiltekst_wrapper_test
             DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("{M+M+A+N}{PN}{N daglig}", "{1}{2}{1}",
                     "{1+2+3+4}{dag 1: 2 dag 2: 3}{2}", "tablet", "tabletter", "tages med rigeligt vand",
                     new[] { new DateTime(2010, 1, 1), new DateTime(2010, 2, 1), new DateTime(2010, 3, 1) },
-                    new[] { new DateTime(2010, 1, 31), new DateTime(2010, 2, 28), new DateTime(2010, 3, 31) },
+                    new[] { new DateTime?(new DateTime(2010, 1, 31)), new DateTime?(new DateTime(2010, 2, 28)), new DateTime?(new DateTime(2010, 3, 31)) },
                     FMKVersion.FMK146, 1);
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.LongText);

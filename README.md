@@ -46,18 +46,26 @@ Eksempel på anvendelse:
 ```C#
 
 DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", ", tages med rigeligt vand", 
-    new [] { new DateTime(2017, 5, 17) }, new [] { new DateTime(2017, 6, 1) }, FMKVersion.FMK146, 1);
+    new [] { new DateTime(2017, 5, 17) }, new [] { new DateTime?(new DateTime(2017, 6, 1)) }, FMKVersion.FMK146, 1);
 
 string xml = res.XmlSnippet;
 string longText = res.LongText;
 string shortText = res.ShortText;
 ```
+
+Eksempel på anvendelse uden doserings-slutdato:
+```C#
+
+DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", ", tages med rigeligt vand", 
+    new [] { new DateTime(2017, 5, 17) }, new DateTime?[] { null }, FMKVersion.FMK146, 1);
+```
+
 Eksempel på anvendelse med flere doseringsperioder:
 ```C#
  DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("{M+M+A+N}{PN}{N daglig}", "{1}{2}{1}",
         "{1+2+3+4}{dag 1: 2 dag 2: 3}{2}", "tablet", "tabletter", "tages med rigeligt vand",
         new [] { new DateTime(2010, 1, 1), new DateTime(2010, 2, 1), new DateTime(2010, 3, 1) },
-        new[] { new DateTime(2010, 1, 31), new DateTime(2010, 2, 28), new DateTime(2010, 3, 31) },
+        new[] { new DateTime?(new DateTime(2010, 1, 31)), new DateTime?(new DateTime(2010, 2, 28)), new DateTime?((new DateTime(2010, 3, 31)) },
         FMKVersion.FMK146, 1);
 ```		
 
@@ -66,6 +74,6 @@ Eksempel på anvendelse med flere doseringsperioder og med længere kort doserin
  DosageProposalResult res = DosisTilTekstWrapper.GetDosageProposalResult("{M+M+A+N}{PN}{N daglig}", "{1}{2}{1}",
         "{1+2+3+4}{dag 1: 2 dag 2: 3}{2}", "tablet", "tabletter", "tages med rigeligt vand",
         new [] { new DateTime(2010, 1, 1), new DateTime(2010, 2, 1), new DateTime(2010, 3, 1) },
-        new[] { new DateTime(2010, 1, 31), new DateTime(2010, 2, 28), new DateTime(2010, 3, 31) },
+        new[] { new DateTime?(new DateTime(2010, 1, 31)), new DateTime?(new DateTime(2010, 2, 28)), new DateTime?(new DateTime(2010, 3, 31)) },
         FMKVersion.FMK146, 1, 10000);
 ```				
