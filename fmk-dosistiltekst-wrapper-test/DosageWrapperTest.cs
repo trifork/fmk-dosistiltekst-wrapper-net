@@ -151,6 +151,8 @@ namespace fmk_dosistiltekst_wrapper_test
         [Test]
         public void testREADMEExampleCode()
         {
+
+       
             DosageWrapper dosage = DosageWrapper.MakeDosage(
                 StructuresWrapper.MakeStructures(
                     UnitOrUnitsWrapper.MakeUnits("tablet", "tabletter"), 
@@ -167,6 +169,50 @@ namespace fmk_dosistiltekst_wrapper_test
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
             DailyDosis daily = DosisTilTekstWrapper.CalculateDailyDosis(dosage);
             DosageType dosageType = DosisTilTekstWrapper.GetDosageType(dosage);
+            DosageTranslationCombined combined = DosisTilTekstWrapper.ConvertCombined(dosage);
+        }
+
+        [Test]
+        public void testAlDenteTestCase()
+        {
+            DosageWrapper DosWrapper;
+
+            UnitOrUnitsWrapper Enhed;
+            DayWrapper[] Dage;
+            DoseWrapper[] Doser;
+            StructureWrapper[] Strukturer;
+            StructuresWrapper DosisStrukturer;
+
+            DosageTranslationCombined Combined;
+
+            Enhed = UnitOrUnitsWrapper.MakeUnits("tablet", "tabletter");
+
+            Dage = new DayWrapper[2];
+            Doser = new DoseWrapper[1];
+            Doser[0] = MorningDoseWrapper.MakeDose(2, false);
+            Dage[0] = DayWrapper.MakeDay(1, Doser);
+
+            Doser = new DoseWrapper[1];
+            Doser[0] = NoonDoseWrapper.MakeDose(1, 3, false);
+            Dage[1] = DayWrapper.MakeDay(2, Doser);
+
+            Strukturer = new StructureWrapper[1];
+            Strukturer[0] = StructureWrapper.MakeStructure(2,
+                                                           "tages med rigeligt væske",
+                                                           DateOrDateTimeWrapper.MakeDate(DateTime.Today),
+                                                           DateOrDateTimeWrapper.MakeDate(DateTime.Today.AddDays(10)),
+                                                           Dage);
+
+            DosisStrukturer = StructuresWrapper.MakeStructures(Enhed, Strukturer);
+            DosWrapper = DosageWrapper.MakeDosage(DosisStrukturer);
+
+            Console.WriteLine(DosisTilTekstWrapper.ConvertLongText(DosWrapper)); // OK
+
+            Combined = DosisTilTekstWrapper.ConvertCombined(DosWrapper); // FEJLER
+            Assert.IsNotNull(Combined);
+            Assert.IsNull(Combined.CombinedTranslation.ShortText);
+            Assert.IsNotNull(Combined.CombinedTranslation.LongText);
+            Assert.IsNotNull(Combined.CombinedTranslation.DailyDosis);
         }
 
          [Test]

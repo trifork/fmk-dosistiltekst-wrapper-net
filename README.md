@@ -38,7 +38,7 @@ DosageType dosageType = DosisTilTekstWrapper.GetDosageType(dosage);
 ```
 Desuden er der også mulighed for at hente kort og lang tekst + daglig dosis hhv. kombineret for fler-periode strukturerede doseringer, samt for hver enkelt periode:
 ```C#
-DosageTranslationCombined combined = DosisTilTekstWrapper.convertCombined(dosage);
+DosageTranslationCombined combined = DosisTilTekstWrapper.ConvertCombined(dosage);
 ```
 ### XML generering ud fra doseringsforslag
 

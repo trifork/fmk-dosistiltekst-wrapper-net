@@ -298,8 +298,8 @@ namespace fmk_dosistiltekst_wrapper_net
 		    if(res.IsNull()) {
 			    return new DosageTranslationCombined(new DosageTranslation(null, null, new DailyDosis()), new List<DosageTranslation>());
 		    }
-		
-		    var combinedShortText = res.AsObject().Get("combinedShortText").AsString();
+
+            var combinedShortText = res.AsObject().Get("combinedShortText").IsNull() ? null : res.AsObject().Get("combinedShortText").AsString();
 		    var combinedLongText = res.AsObject().Get("combinedLongText").AsString();
 		
 		    var combinedDD = GetDailyDosisFromJS(res.AsObject().Get("combinedDailyDosis").AsObject());
@@ -308,7 +308,17 @@ namespace fmk_dosistiltekst_wrapper_net
             for (int i = 0; i < periodTextArray.GetLength(); i++)
             {
                 var periodTexts = periodTextArray.Get(i.ToString()).AsArray();
-                translations.Add(new DosageTranslation(periodTexts.Get("0").AsString(), periodTexts.Get("1").AsString(), GetDailyDosisFromJS(periodTexts.Get("2").AsObject())));
+                String periodText1 = null;
+                String periodText2 = null;
+                if (periodTexts.Get("0").IsString())
+                {
+                    periodText1 = periodTexts.Get("0").AsString();
+                }
+                if (periodTexts.Get("1").IsString())
+                {
+                    periodText2 = periodTexts.Get("1").AsString();
+                }
+                translations.Add(new DosageTranslation(periodText1, periodText2, GetDailyDosisFromJS(periodTexts.Get("2").AsObject())));
             }
 		    return new DosageTranslationCombined(new DosageTranslation(combinedShortText, combinedLongText, combinedDD), translations);
 	}
