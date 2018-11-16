@@ -406,7 +406,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "Doseringsforløbet starter onsdag den 18. april 2012:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 1-2 sug efter behov ved anstrengelse",
+                    "   Efter behov: 1-2 sug efter behov.\n   Bemærk: ved anstrengelse",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "SimpleAccordingToNeedConverterImpl",
@@ -434,7 +434,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "Doseringsforløbet starter onsdag den 18. april 2012 og gentages hver dag:\n" +
                     "   Doseringsforløb:\n" +
-                    "   1-2 tabletter efter behov højst 3 gange daglig ved smerter",
+                    "   1-2 tabletter efter behov højst 3 gange daglig.\n   Bemærk: ved smerter",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "SimpleLimitedAccordingToNeedConverterImpl",
@@ -460,7 +460,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "Doseringsforløbet starter onsdag den 18. april 2012 og gentages hver dag:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 1-2 tabletter efter behov ved smerter",
+                    "   Efter behov: 1-2 tabletter efter behov.\n   Bemærk: ved smerter",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
@@ -490,9 +490,9 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "Doseringsforløbet starter onsdag den 18. april 2012 og ophører efter det angivne forløb.\n" +
                     "Bemærk at doseringen varierer og har et komplekst forløb:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 1 ml efter behov mod smerter\n" +
-                    "   Onsdag den 18. april 2012: 20 ml efter behov højst 2 gange mod smerter\n" +
-                    "   Torsdag den 19. april 2012: 20 ml efter behov højst 2 gange mod smerter",
+                    "   Efter behov: 1 ml efter behov\n" +
+                    "   Onsdag den 18. april 2012: 20 ml efter behov højst 2 gange\n" +
+                    "   Torsdag den 19. april 2012: 20 ml efter behov højst 2 gange.\n   Bemærk: mod smerter",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
@@ -520,9 +520,9 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "Doseringsforløbet starter onsdag den 18. april 2012, forløbet gentages efter 2 dage.\n" +
                     "Bemærk at doseringen har et komplekst forløb:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 1-2 sug efter behov ved anstrengelse\n" +
-                    "   Onsdag den 18. april 2012: 1-2 sug efter behov højst 1 gang ved anstrengelse\n" +
-                    "   Torsdag den 19. april 2012: 1-2 sug efter behov højst 1 gang ved anstrengelse",
+                    "   Efter behov: 1-2 sug efter behov\n" +
+                    "   Onsdag den 18. april 2012: 1-2 sug efter behov højst 1 gang\n" +
+                    "   Torsdag den 19. april 2012: 1-2 sug efter behov højst 1 gang.\n   Bemærk: ved anstrengelse",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
@@ -543,7 +543,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "Doseringsforløbet starter onsdag den 18. april 2012, forløbet gentages efter 7 dage:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 1-2 tabletter efter behov ved smerter",
+                    "   Efter behov: 1-2 tabletter efter behov.\n   Bemærk: ved smerter",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);

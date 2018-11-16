@@ -47,7 +47,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   1 stk morgen ! + 2 stk middag ! + 3 stk aften ! + 4 stk nat !",
+                "   1 stk morgen + 2 stk middag + 3 stk aften + 4 stk nat.\n   Bemærk: !",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "MorningNoonEveningNightConverterImpl",
@@ -79,7 +79,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   2 stk morgen ved måltid + 2 stk middag ved måltid + 2 stk aften ved måltid + 2 stk nat ved måltid",
+                "   2 stk morgen + 2 stk middag + 2 stk aften + 2 stk nat.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "MorningNoonEveningNightConverterImpl",
@@ -110,7 +110,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   2 stk middag ved måltid + 3 stk aften ved måltid + 4 stk nat ved måltid",
+                "   2 stk middag + 3 stk aften + 4 stk nat.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "MorningNoonEveningNightConverterImpl",
@@ -141,7 +141,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   1 stk morgen ved måltid + 2 stk middag ved måltid + 3 stk aften ved måltid",
+                "   1 stk morgen + 2 stk middag + 3 stk aften.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
@@ -171,7 +171,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   0-1 stk morgen ved måltid + 2-3 stk middag ved måltid",
+                "   0-1 stk morgen + 2-3 stk middag.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
@@ -201,7 +201,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                             1,
                             NightDoseWrapper.MakeDose(2.0)))));
             Assert.AreEqual(
-                "Daglig 2 stk nat ved måltid",
+                "Daglig 2 stk nat.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",

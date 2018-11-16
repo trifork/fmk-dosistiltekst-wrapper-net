@@ -46,7 +46,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   Dag ikke angivet: 1 plaster 5 timer før virkning ønskes",
+                "   Dag ikke angivet: 1 plaster.\n   Bemærk: 5 timer før virkning ønskes",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "SimpleNonRepeatedConverterImpl",
@@ -73,7 +73,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
                 "   Doseringsforløb:\n" +
-                "   Lørdag den 1. januar 2011: 1 kapsel 2 gange dagen før indlæggelse",
+                "   Lørdag den 1. januar 2011: 1 kapsel 2 gange.\n   Bemærk: dagen før indlæggelse",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
@@ -99,7 +99,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                 "Doseringen foretages kun lørdag den 1. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   Dag ikke angivet: 1 stk kl. 07:30 før indlæggelse",
+                "   Dag ikke angivet: 1 stk kl. 07:30.\n   Bemærk: før indlæggelse",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "SimpleNonRepeatedConverterImpl",

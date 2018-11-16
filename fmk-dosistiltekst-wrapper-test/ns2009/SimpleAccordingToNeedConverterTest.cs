@@ -73,7 +73,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 2 stk efter behov ved smerter",
+                    "   Efter behov: 2 stk efter behov.\n   Bemærk: ved smerter",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "SimpleAccordingToNeedConverterImpl",

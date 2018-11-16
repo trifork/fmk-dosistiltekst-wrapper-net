@@ -17,7 +17,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                 StructuresWrapper.MakeStructures(
                     UnitOrUnitsWrapper.MakeUnits("dråbe", "dråber"),
                     StructureWrapper.MakeStructure(
-                        1, ", 1 i hvert øje", DateOrDateTimeWrapper.MakeDate("2011-01-01"), DateOrDateTimeWrapper.MakeDate("2011-01-30"),
+                        1, "1 i hvert øje", DateOrDateTimeWrapper.MakeDate("2011-01-01"), DateOrDateTimeWrapper.MakeDate("2011-01-30"),
                         DayWrapper.MakeDay(
                             1,
                             PlainDoseWrapper.MakeDose(2.0),
@@ -28,7 +28,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                 "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                 "   Doseringsforløb:\n" +
-                "   2 dråber 2 gange daglig, 1 i hvert øje",
+                "   2 dråber 2 gange daglig.\n   Bemærk: 1 i hvert øje",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                 "RepeatedEyeOrEarConverterImpl",

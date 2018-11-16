@@ -64,10 +64,10 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4 stk 2 gange ved måltid\n" +
-                    "   Søndag den 2. januar 2011: 4 stk 2 gange ved måltid\n" +
-                    "   Mandag den 3. januar 2011: 4 stk 2 gange ved måltid\n" +
-                    "   Tirsdag den 4. januar 2011: 4 stk 2 gange ved måltid",
+                    "   Lørdag den 1. januar 2011: 4 stk 2 gange\n" +
+                    "   Søndag den 2. januar 2011: 4 stk 2 gange\n" +
+                    "   Mandag den 3. januar 2011: 4 stk 2 gange\n" +
+                    "   Tirsdag den 4. januar 2011: 4 stk 2 gange.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
@@ -105,9 +105,9 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4-6 stk 2 gange ved måltid\n" +
-                    "   Søndag den 2. januar 2011: 4-6 stk 2 gange ved måltid\n" +
-                    "   Mandag den 3. januar 2011: 4-6 stk 2 gange ved måltid",
+                    "   Lørdag den 1. januar 2011: 4-6 stk 2 gange\n" +
+                    "   Søndag den 2. januar 2011: 4-6 stk 2 gange\n" +
+                    "   Mandag den 3. januar 2011: 4-6 stk 2 gange.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
@@ -139,7 +139,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
 		Assert.AreEqual(
 				"Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
 				"   Doseringsforløb:\n" +
-				"   Mandag den 3. januar 2011: 7 ml kl. 11:25 ved måltid",
+				"   Mandag den 3. januar 2011: 7 ml kl. 11:25.\n   Bemærk: ved måltid",
 				DosisTilTekstWrapper.ConvertLongText(dosage));
 		Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(

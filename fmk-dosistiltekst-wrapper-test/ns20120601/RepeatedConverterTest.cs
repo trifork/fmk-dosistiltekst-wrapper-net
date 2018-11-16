@@ -108,7 +108,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "Doseringsforløbet starter mandag den 12. august 2013, forløbet gentages hver uge:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Onsdag: 1 stk kl. 08:00 ved måltid",
+                    "   Onsdag: 1 stk kl. 08:00.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "RepeatedConverterImpl",
@@ -140,7 +140,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "Doseringsforløbet starter mandag den 12. august 2013, forløbet gentages hver uge:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Onsdag: 1 stk morgen ved måltid",
+                    "   Onsdag: 1 stk morgen.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "WeeklyMorningNoonEveningNightConverterImpl",
@@ -174,7 +174,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "Doseringsforløbet starter mandag den 12. august 2013, forløbet gentages hver uge, og ophører torsdag den 12. september 2013:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Onsdag: 1 stk morgen ved måltid",
+                    "   Onsdag: 1 stk morgen.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "WeeklyMorningNoonEveningNightConverterImpl",
@@ -206,7 +206,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
 		Assert.AreEqual(
 				"Doseringsforløbet starter mandag den 12. august 2013, forløbet gentages efter 49 dage:\n"+
 				"   Doseringsforløb:\n"+
-				"   Onsdag den 14. august 2013: 1 stk ved måltid",
+				"   Onsdag den 14. august 2013: 1 stk.\n   Bemærk: ved måltid",
 				DosisTilTekstWrapper.ConvertLongText(dosage));
 		Assert.AreEqual(
 				"RepeatedConverterImpl",
@@ -237,7 +237,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
 		Assert.AreEqual(
 				"Doseringsforløbet starter mandag den 12. august 2013, forløbet gentages efter 60 dage:\n"+
 				"   Doseringsforløb:\n"+
-				"   Onsdag den 14. august 2013: 1 stk ved måltid",
+				"   Onsdag den 14. august 2013: 1 stk.\n   Bemærk: ved måltid",
 				DosisTilTekstWrapper.ConvertLongText(dosage));
 		Assert.AreEqual(
 				"RepeatedConverterImpl",
@@ -266,7 +266,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører tirsdag den 4. januar 2011:\n" +
                     "   Doseringsforløb:\n" +
-                    "   4 tabletter 1 gang daglig ved måltid",
+                    "   4 tabletter 1 gang daglig.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "RepeatedConverterImpl",

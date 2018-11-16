@@ -57,7 +57,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                     "   Doseringsforløb:\n" +
-                    "   1 tablet ved måltid + 1 tablet ved måltid + 1 tablet efter behov ved måltid",
+                    "   1 tablet + 1 tablet + 1 tablet efter behov.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "ParacetamolConverterImpl",
@@ -90,7 +90,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
                     "   Doseringsforløb:\n" +
-                    "   1 tablet ved måltid + 1 tablet ved måltid + 1 tablet efter behov ved måltid",
+                    "   1 tablet + 1 tablet + 1 tablet efter behov.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     "ParacetamolConverterImpl",

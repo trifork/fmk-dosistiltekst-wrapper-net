@@ -28,13 +28,13 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
 
             Assert.AreEqual("Doseringsforløbet starter fredag den 7. februar 2014 kl. 07:19, forløbet gentages efter 14 dage:\n" +
                      "   Doseringsforløb:\n" +
-                     "   Fredag den 7. februar 2014: 1 stk middag ved måltid\n" +
-                     "   Lørdag den 8. februar 2014: 1 stk middag ved måltid\n" +
-                     "   Søndag den 9. februar 2014: 1 stk middag ved måltid\n" +
-                     "   Mandag den 10. februar 2014: 1 stk middag ved måltid\n" +
-                     "   Tirsdag den 11. februar 2014: 1 stk middag ved måltid\n" +
-                     "   Onsdag den 12. februar 2014: 1 stk middag ved måltid\n" +
-                     "   Torsdag den 13. februar 2014: 1 stk middag ved måltid", DosisTilTekstWrapper.ConvertLongText(dosage));
+                     "   Fredag den 7. februar 2014: 1 stk middag\n" +
+                     "   Lørdag den 8. februar 2014: 1 stk middag\n" +
+                     "   Søndag den 9. februar 2014: 1 stk middag\n" +
+                     "   Mandag den 10. februar 2014: 1 stk middag\n" +
+                     "   Tirsdag den 11. februar 2014: 1 stk middag\n" +
+                     "   Onsdag den 12. februar 2014: 1 stk middag\n" +
+                     "   Torsdag den 13. februar 2014: 1 stk middag.\n   Bemærk: ved måltid", DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual("1 stk middag daglig ved måltid i en uge, herefter en uges pause", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     0.5,

@@ -30,7 +30,7 @@ namespace fmk_dosistiltekst_wrapper_test.ns2009
             Assert.AreEqual(
               "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
               "   Doseringsforløb:\n" +
-              "   1 stk ved måltid + 1 stk ved måltid + 1 stk efter behov ved måltid",
+              "   1 stk + 1 stk + 1 stk efter behov.\n   Bemærk: ved måltid",
               DosisTilTekstWrapper.ConvertLongText(dosage));
 
             Assert.AreEqual("DailyRepeatedConverterImpl", DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));

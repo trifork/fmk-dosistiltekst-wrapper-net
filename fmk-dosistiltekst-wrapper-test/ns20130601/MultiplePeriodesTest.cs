@@ -398,7 +398,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                 "\n" +
                 "Doseringsforløbet starter lørdag den 1. juni 2013:\n" +
                 "   Doseringsforløb:\n" +
-                "   Efter behov: 2 tabletter efter behov ved smerter\n" +
+                "   Efter behov: 2 tabletter efter behov.\n   Bemærk: ved smerter\n" +
                 "\n" +
                 "Doseringsforløbet starter tirsdag den 4. juni 2013 og gentages hver dag:\n" +
                 "   Doseringsforløb:\n" +
@@ -477,7 +477,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                     "\n" +
                     "Doseringsforløbet starter lørdag den 1. juni 2013 kl. 14:20:\n" +
                     "   Doseringsforløb:\n" +
-                    "   Efter behov: 2 tabletter efter behov ved smerter\n" +
+                    "   Efter behov: 2 tabletter efter behov.\n   Bemærk: ved smerter\n" +
                     "\n" +
                     "Doseringsforløbet starter tirsdag den 4. juni 2013 kl. 10:30, gentages hver dag, og ophører torsdag den 6. juni 2013 kl. 15:30:\n" +
                     "   Doseringsforløb:\n" +
