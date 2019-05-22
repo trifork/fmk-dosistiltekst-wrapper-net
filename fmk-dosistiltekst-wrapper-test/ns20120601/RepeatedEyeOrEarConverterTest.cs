@@ -34,7 +34,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                 "RepeatedEyeOrEarConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 dråbe 2 gange daglig i begge øjne",
+                "1 dråbe 2 gange daglig.\n   Bemærk: i begge øjne",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     4.0,
