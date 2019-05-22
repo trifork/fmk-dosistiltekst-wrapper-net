@@ -63,7 +63,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                     "ParacetamolConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet 2-3 gange daglig ved måltid",
+                    "1 tablet 2-3 gange daglig.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -96,7 +96,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                     "ParacetamolConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet 2-3 gange daglig ved måltid",
+                    "1 tablet 2-3 gange daglig.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));

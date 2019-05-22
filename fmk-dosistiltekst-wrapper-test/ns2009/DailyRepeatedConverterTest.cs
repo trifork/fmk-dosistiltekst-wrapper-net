@@ -24,7 +24,7 @@ namespace fmk_dosistiltekst_wrapper_test.ns2009
                             PlainDoseWrapper.MakeDose(1, true)))));
 
             Assert.AreEqual(
-                    "1 stk 2-3 gange daglig ved måltid",
+                    "1 stk 2-3 gange daglig.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
 
             Assert.AreEqual(

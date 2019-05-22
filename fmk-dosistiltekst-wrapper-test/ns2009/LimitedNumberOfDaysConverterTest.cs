@@ -73,7 +73,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 stk 2 gange daglig i 4 dage ved måltid",
+                    "4 stk 2 gange daglig i 4 dage.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -113,7 +113,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4-6 stk 2 gange daglig i 3 dage ved måltid",
+                    "4-6 stk 2 gange daglig i 3 dage.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,

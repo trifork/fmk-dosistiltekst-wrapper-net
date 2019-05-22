@@ -85,7 +85,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                 "MorningNoonEveningNightConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "2 stk morgen, middag, aften og nat ved måltid",
+                "2 stk morgen, middag, aften og nat.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -116,7 +116,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                 "MorningNoonEveningNightConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "2 stk middag, 3 stk aften og 4 stk nat ved måltid",
+                "2 stk middag, 3 stk aften og 4 stk nat.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     9.0,
@@ -147,7 +147,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 stk morgen, 2 stk middag og 3 stk aften ved måltid",
+                "1 stk morgen, 2 stk middag og 3 stk aften.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     6.0,
@@ -177,7 +177,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "0-1 stk morgen og 2-3 stk middag ved måltid",
+                "0-1 stk morgen og 2-3 stk middag.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     2,
@@ -207,7 +207,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "2 stk nat ved måltid",
+                "2 stk nat.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     2.0,

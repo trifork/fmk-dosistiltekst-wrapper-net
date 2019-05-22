@@ -72,7 +72,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "MorningNoonEveningNightInNDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet morgen ved måltid i 5 dage",
+                    "1 tablet morgen.\n   Bemærk: ved måltid i 5 dage",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     1.0,

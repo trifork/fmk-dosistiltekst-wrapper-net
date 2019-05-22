@@ -71,7 +71,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 måleskefulde 2 gange daglig i 4 dage ved måltid",
+                    "4 måleskefulde 2 gange daglig i 4 dage.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -116,7 +116,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 måleskefulde efter behov 2 gange daglig i 4 dage ved måltid",
+                    "4 måleskefulde efter behov 2 gange daglig i 4 dage.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -142,7 +142,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 tabletter 1 gang ved måltid",
+                    "4 tabletter 1 gang.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(4.0, DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value, 0.000000001);
             Assert.AreEqual(DosageType.OneTime, DosisTilTekstWrapper.GetDosageType(dosage));

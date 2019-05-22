@@ -85,7 +85,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "RepeatedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "3 stk 2 gange daglig ved måltid",
+                    "3 stk 2 gange daglig.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     6.0,
@@ -114,7 +114,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "RepeatedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 stk daglig ved måltid",
+                    "1 stk daglig.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             // assertEquals(10.0, result.getAvgDailyDosis().doubleValue()); 				
         }
@@ -176,7 +176,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "RepeatedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 stk hver 2. dag ved måltid",
+                    "1 stk hver 2. dag.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     0.5,
@@ -205,7 +205,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"1 stk lørdag hver uge ved måltid", 
+				"1 stk lørdag hver uge.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				1/7.0, 
@@ -233,7 +233,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"1 stk 1 gang om måneden ved måltid", 
+				"1 stk 1 gang om måneden.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				1/30.0, 
@@ -261,7 +261,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"2,5 stk lørdag hver uge ved måltid", 
+				"2,5 stk lørdag hver uge.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				2.5/7.0, 
@@ -289,7 +289,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"2,5 stk 2 gange lørdag hver uge ved måltid",
+				"2,5 stk 2 gange lørdag hver uge.\n   Bemærk: ved måltid",
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				5/7.0, 
@@ -317,7 +317,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"2,5 stk 1 gang om måneden ved måltid", 
+				"2,5 stk 1 gang om måneden.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				2.5/30.0, 
@@ -346,7 +346,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"2,5 stk 2 gange samme dag 1 gang om måneden ved måltid", 
+				"2,5 stk 2 gange samme dag 1 gang om måneden.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				5/30.0, 
@@ -374,7 +374,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"2,5 stk hver 5. dag ved måltid", 
+				"2,5 stk hver 5. dag.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				2.5/5.0, 
@@ -404,7 +404,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "RepeatedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "2,5 stk 2 gange samme dag hver 5. dag ved måltid",
+                    "2,5 stk 2 gange samme dag hver 5. dag.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     1,
@@ -433,7 +433,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
 				"RepeatedConverterImpl", 
 				DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
-				"1/2 stk 2 gange samme dag hver 5. dag ved måltid", 
+				"1/2 stk 2 gange samme dag hver 5. dag.\n   Bemærk: ved måltid", 
 				DosisTilTekstWrapper.ConvertShortText(dosage));
 		Assert.AreEqual(
 				1/5.0, 

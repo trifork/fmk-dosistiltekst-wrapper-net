@@ -35,13 +35,13 @@ namespace fmk_dosistiltekst_wrapper_test
                 DosisTilTekstWrapper.ConvertLongText(dosage));
 
             DosageTranslationCombined combined = DosisTilTekstWrapper.ConvertCombined(dosage);
-            Assert.AreEqual("4 stk 2 gange daglig mod smerter", combined.CombinedTranslation.ShortText);
+            Assert.AreEqual("4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.CombinedTranslation.ShortText);
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
                     "   Doseringsforløb:\n" +
                     "   4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.CombinedTranslation.LongText);
             Assert.AreEqual(1, combined.PeriodTranslations.Count);
-            Assert.AreEqual("4 stk 2 gange daglig mod smerter", combined.PeriodTranslations[0].ShortText);
+            Assert.AreEqual("4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.PeriodTranslations[0].ShortText);
             Assert.AreEqual(
                     "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
                     "   Doseringsforløb:\n" +

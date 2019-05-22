@@ -52,7 +52,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                 "ParacetamolConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1-2 stk 3-4 gange daglig ved smerter",
+                "1-2 stk 3-4 gange daglig.\n   Bemærk: ved smerter",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
