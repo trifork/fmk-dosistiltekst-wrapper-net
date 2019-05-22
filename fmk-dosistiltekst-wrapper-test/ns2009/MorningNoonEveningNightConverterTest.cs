@@ -53,7 +53,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                 "MorningNoonEveningNightConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 stk morgen, 2 stk middag, 3 stk aften og 4 stk nat !",
+                "1 stk morgen, 2 stk middag, 3 stk aften og 4 stk nat.\n   Bemærk: !",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                 10.0,

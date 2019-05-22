@@ -79,7 +79,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 kapsel 2 gange dagen før indlæggelse",
+                "1 kapsel 2 gange dagen.\n   Bemærk: før indlæggelse",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(2, DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value, 0.000000001);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));

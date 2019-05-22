@@ -436,12 +436,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "   Doseringsforløb:\n" +
                     "   1-2 tabletter efter behov højst 3 gange daglig.\n   Bemærk: ved smerter",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual(
-                    "SimpleLimitedAccordingToNeedConverterImpl",
-                    DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "1-2 tabletter efter behov, højst 3 gange daglig.\n   Bemærk: ved smerter",
-                    DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }

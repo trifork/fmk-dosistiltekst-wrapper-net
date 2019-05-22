@@ -112,12 +112,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                     "   Mandag den 3. januar 2011: 4 måleskefulde efter behov højst 2 gange\n" +
                     "   Tirsdag den 4. januar 2011: 4 måleskefulde efter behov højst 2 gange.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual(
-                    "LimitedNumberOfDaysConverterImpl",
-                    DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "4 måleskefulde efter behov 2 gange daglig i 4 dage.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }

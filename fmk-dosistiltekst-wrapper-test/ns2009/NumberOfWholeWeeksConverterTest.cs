@@ -35,7 +35,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                      "   Tirsdag den 11. februar 2014: 1 stk middag\n" +
                      "   Onsdag den 12. februar 2014: 1 stk middag\n" +
                      "   Torsdag den 13. februar 2014: 1 stk middag.\n   Bemærk: ved måltid", DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual("1 stk middag daglig.\n   Bemærk: ved måltid i en uge, herefter en uges pause", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     0.5,
                     DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value,

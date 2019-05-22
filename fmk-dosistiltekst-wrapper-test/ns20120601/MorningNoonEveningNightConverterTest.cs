@@ -153,12 +153,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                 "   Doseringsforløb:\n" +
                 "   1 mg morgen efter behov + 2 mg aften efter behov.\n   Bemærk: ved måltid",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual(
-                "MorningNoonEveningNightConverterImpl",
-                DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual(
-                "1 mg morgen efter behov og 2 mg aften efter behov.\n   Bemærk: ved måltid",
-                DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }

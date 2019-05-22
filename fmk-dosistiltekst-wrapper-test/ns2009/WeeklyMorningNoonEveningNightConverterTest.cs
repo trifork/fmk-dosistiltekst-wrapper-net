@@ -64,12 +64,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                      "   Søndag: 1 stk morgen + 1 stk aften.\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
-                    "WeeklyMorningNoonEveningNightConverterImpl",
-                    DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "1 stk morgen og aften torsdag, fredag og søndag hver uge.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertShortText(dosage));
-            Assert.AreEqual(
                     6 / 7.0,
                     DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value,
                     0.000000001);
