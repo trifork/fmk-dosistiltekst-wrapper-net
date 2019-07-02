@@ -52,7 +52,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                 "SimpleNonRepeatedConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 plaster.\n   Bemærk: 5 timer før virkning ønskes",
+                "1 plaster (gentages ikke).\n   Bemærk: 5 timer før virkning ønskes",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -79,7 +79,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 kapsel 2 gange.\n   Bemærk: dagen før indlæggelse",
+                "1 kapsel 2 gange (gentages ikke).\n   Bemærk: dagen før indlæggelse",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(2, DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value, 0.000000001);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -105,7 +105,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "SimpleNonRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 stk kl. 07:30.\n   Bemærk: før indlæggelse",
+                "1 stk kl. 07:30 (gentages ikke).\n   Bemærk: før indlæggelse",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -131,7 +131,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "SimpleNonRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                "1 stk kl. 07:30",
+                "1 stk kl. 07:30 (gentages ikke)",
                 DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     1.0,

@@ -74,7 +74,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                     "MorningNoonEveningNightInNDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet morgen.\n   Bemærk: ved måltid i 5 dage",
+                    "1 tablet morgen i 5 dage (gentages ikke).\n   Bemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     1.0,
@@ -122,7 +122,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                     "MorningNoonEveningNightInNDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet morgen efter behov.\n   Bemærk: ved måltid i 5 dage",
+                    "1 tablet morgen efter behov i 5 dage.\n   Bemærk: ved måltid", //  (gentages ikke) left out, short text would be to long >70
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
