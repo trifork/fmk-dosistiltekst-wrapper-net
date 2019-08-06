@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>FMKDosisTilTekstWrapper</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Fælles Medicinkort: dosis-til-tekst wrapper for .NET</title>
     <authors>faellesmedicinkort</authors>
     <projectUrl>http://wiki.fmk.netic.dk/doku.php</projectUrl>
     <iconUrl>http://wiki.fmk.netic.dk/lib/exe/fetch.php?media=wiki:logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Dosis-til-tekst-wrapper er en komponent der, givet en doseringsstruktur, kan generere hhv. korte- lange doseringstekster. Desuden kan der genereres xml-doseringsforslag samt beregnes doseringstyper. Komponenten er en del af Sundhedsdatastyrelsens Fælles Medicinkort projekt.</description>
-    <releaseNotes>Changed endDates argument of DosageProposalXMLGenerator.GetDosageProposalResult() to array of optional DateTime, to let callers specify "no dosage-enddate</releaseNotes>
+    <releaseNotes>Fixed bug regarding ConvertCombined failing in case of no short dosage text</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>FMK dosistiltekst</tags>
     <dependencies>

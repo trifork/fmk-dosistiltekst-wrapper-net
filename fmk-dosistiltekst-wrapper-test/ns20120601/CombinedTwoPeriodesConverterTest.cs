@@ -52,7 +52,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                     "CombinedTwoPeriodesConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "første dag 1 dråbe 4 gange, herefter 1 dråbe 2 gange daglig",
+                    "Første dag 1 dråbe 4 gange, herefter 1 dråbe 2 gange daglig",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
