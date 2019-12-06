@@ -19,8 +19,8 @@ namespace fmk_dosistiltekst_wrapper_test
             
             
             // Local devel path
-            var filename = "\\projects\\fmk-dosis-til-tekst-ts\\target\\dosistiltekst.js";
-			// var filename = "/home/markus/FMK/fmk-dosis-til-tekst-ts/target/dosistiltekst.js";
+            //var filename = "\\projects\\fmk-dosis-til-tekst-ts\\target\\dosistiltekst.js";
+			var filename = "/home/markus/FMK/fmk-dosis-til-tekst-ts/target/dosistiltekst.js";
 
             
             if (!File.Exists(filename))

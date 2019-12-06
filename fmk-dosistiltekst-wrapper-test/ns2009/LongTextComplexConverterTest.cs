@@ -412,7 +412,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "SimpleAccordingToNeedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1-2 sug efter behov (gentages ikke).\n   Bemærk: ved anstrengelse",
+                    "1-2 sug efter behov.\n   Bemærk: ved anstrengelse",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -561,7 +561,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "   Doseringsforløb:\n" +
                     "   Efter behov: 1 tablet efter behov",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual("1 tablet efter behov (gentages ikke)", DosisTilTekstWrapper.ConvertShortText(dosage));
+            Assert.AreEqual("1 tablet efter behov", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }

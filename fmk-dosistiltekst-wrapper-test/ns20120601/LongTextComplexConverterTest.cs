@@ -75,7 +75,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                     "   Doseringsforløb:\n" +
                     "   Efter behov: 1 tablet morgen efter behov",
                     DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual("1 tablet morgen efter behov (gentages ikke)", DosisTilTekstWrapper.ConvertShortText(dosage));
+            Assert.AreEqual("1 tablet morgen efter behov", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }
