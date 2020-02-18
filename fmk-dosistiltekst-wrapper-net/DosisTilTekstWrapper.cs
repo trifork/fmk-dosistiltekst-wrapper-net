@@ -122,8 +122,6 @@ namespace fmk_dosistiltekst_wrapper_net
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
-                Converters = new[] { new DateSerializer() },
-                
             };
         }
 
@@ -174,7 +172,7 @@ namespace fmk_dosistiltekst_wrapper_net
             }
 
             string json = "(unset)";
-            json = JsonConvert.SerializeObject(dosage);
+            json = JsonConvert.SerializeObject(dosage, new DateSerializer());
             JsValue res = res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
             return res.IsNull() ? null : res.AsString();
         }
