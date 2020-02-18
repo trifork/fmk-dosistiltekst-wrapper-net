@@ -24,14 +24,10 @@ namespace fmk_dosistiltekst_wrapper_test.ns2009
                             PlainDoseWrapper.MakeDose(1, true)))));
 
             Assert.AreEqual(
-                    "1 stk 2-3 gange daglig.\n   Bemærk: ved måltid",
+                    "1 stk 2-3 gange daglig.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
 
-            Assert.AreEqual(
-              "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
-              "   Doseringsforløb:\n" +
-              "   1 stk + 1 stk + 1 stk efter behov.\n   Bemærk: ved måltid",
-              DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
 
             Assert.AreEqual("DailyRepeatedConverterImpl", DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
             Assert.AreEqual("ParacetamolConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));

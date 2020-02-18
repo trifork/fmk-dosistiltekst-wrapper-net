@@ -2,22 +2,23 @@
 <package >
   <metadata>
     <id>FMKDosisTilTekstWrapper</id>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <title>Fælles Medicinkort: dosis-til-tekst wrapper for .NET</title>
     <authors>faellesmedicinkort</authors>
     <projectUrl>http://wiki.fmk.netic.dk/doku.php</projectUrl>
     <iconUrl>http://wiki.fmk.netic.dk/lib/exe/fetch.php?media=wiki:logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Dosis-til-tekst-wrapper er en komponent der, givet en doseringsstruktur, kan generere hhv. korte- lange doseringstekster. Desuden kan der genereres xml-doseringsforslag samt beregnes doseringstyper. Komponenten er en del af Sundhedsdatastyrelsens Fælles Medicinkort projekt.</description>
-    <releaseNotes>Fixed bug regarding ConvertCombined failing in case of no short dosage text</releaseNotes>
-    <copyright>Copyright 2018</copyright>
+    <releaseNotes>Fixed bug regarding global overwrite of DateTime serialization</releaseNotes>
+    <copyright>Copyright 2020</copyright>
     <tags>FMK dosistiltekst</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="10.0.3" />
-      <dependency id="Jint" version="2.11.23" />
+      <dependency id="Newtonsoft.Json" version="12.0.3" />
+      <dependency id="Jint" version="2.11.58" />
     </dependencies>
   </metadata>
     <files>
         <file src="bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib" />
+        <file src="bin\Debug\netcoreapp2.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\netcoreapp2.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib" />
     </files>
 </package>

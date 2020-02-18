@@ -26,6 +26,7 @@ using NUnit.Framework;
 using fmk_dosistiltekst_wrapper_net;
 using fmk_dosistiltekst_wrapper_net.vowrapper;
 using fmk_dosistiltekst_wrapper_test;
+using System;
 
 namespace fmk_dosistiltekst_wrapper_net.ns2009 {
 
@@ -61,19 +62,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
             Assert.AreEqual(
                     "DefaultLongTextConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4 stk 2 gange\n" +
-                    "   Søndag den 2. januar 2011: 4 stk 2 gange\n" +
-                    "   Mandag den 3. januar 2011: 4 stk 2 gange\n" +
-                    "   Tirsdag den 4. januar 2011: 4 stk 2 gange.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 stk 2 gange daglig i 4 dage.\n   Bemærk: ved måltid",
+                    "4 stk 2 gange daglig i 4 dage.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -102,18 +96,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                             3,
                             PlainDoseWrapper.MakeDose(4.0, 6.0),
                             PlainDoseWrapper.MakeDose(4.0, 6.0)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4-6 stk 2 gange\n" +
-                    "   Søndag den 2. januar 2011: 4-6 stk 2 gange\n" +
-                    "   Mandag den 3. januar 2011: 4-6 stk 2 gange.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4-6 stk 2 gange daglig i 3 dage.\n   Bemærk: ved måltid",
+                    "4-6 stk 2 gange daglig i 3 dage.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -136,11 +124,9 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
 					DayWrapper.MakeDay(
 						3, 
 						TimedDoseWrapper.MakeDose(new LocalTime(11,25), 7.0, false)))));
-		Assert.AreEqual(
-				"Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
-				"   Doseringsforløb:\n" +
-				"   Mandag den 3. januar 2011: 7 ml kl. 11:25.\n   Bemærk: ved måltid",
-				DosisTilTekstWrapper.ConvertLongText(dosage));
+        Console.WriteLine(DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
+		AssertLongTextEquals(dosage);
+        
 		Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
 		Assert.AreEqual(
 				7.0/3.0, 

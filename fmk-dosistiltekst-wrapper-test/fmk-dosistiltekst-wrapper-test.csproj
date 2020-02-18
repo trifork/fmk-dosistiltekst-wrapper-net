@@ -1,134 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D651676D-9930-44F1-AE6B-20107721F096}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>fmk_dosistiltekst_wrapper_test</RootNamespace>
-    <AssemblyName>fmk-dosistiltekst-wrapper-test</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>False</IsCodedUITest>
-    <TestProjectType>UnitTest</TestProjectType>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
+ <ItemGroup>
+  <PackageReference Include="nunit" Version="3.12.0" />
+  <PackageReference Include="NUnit3TestAdapter" Version="3.16.0" />
+  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    </ItemGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\fmk-dosistiltekst-wrapper-net\packages\NUnit.3.9.0\lib\net40\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <Choose>
-    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-      </ItemGroup>
-    </When>
-    <Otherwise />
-  </Choose>
-  <ItemGroup>
-    <Compile Include="AbstractDosageWrapperTest.cs" />
-    <Compile Include="DosageProposalTest.cs" />
-    <Compile Include="DosageProposalXMLGeneratorTest.cs" />
-    <Compile Include="DosageTypeCalculator144Test.cs" />
-    <Compile Include="DosageTypeCalculatorTest.cs" />
-    <Compile Include="DosageWrapperTest.cs" />
-    <Compile Include="ns2009\DailyRepeatedConverterTest.cs" />
-    <Compile Include="ns2009\LimitedNumberOfDaysConverterTest.cs" />
-    <Compile Include="ns2009\LongTextComplexConverterTest.cs" />
-    <Compile Include="ns2009\LongTextConverterTest.cs" />
-    <Compile Include="ns2009\MorningNoonEveningNightAndAccordingToNeedConverterTest.cs" />
-    <Compile Include="ns2009\MorningNoonEveningNightConverterTest.cs" />
-    <Compile Include="ns2009\MorningNoonEveningNightInNDaysConverterTest.cs" />
-    <Compile Include="ns2009\NumberOfWholeWeeksConverterTest.cs" />
-    <Compile Include="ns2009\ParacetamolConverterTest.cs" />
-    <Compile Include="ns2009\RepeatedConverterTest.cs" />
-    <Compile Include="ns2009\SimpleAccordingToNeedConverterTest.cs" />
-    <Compile Include="ns2009\SimpleLimitedAccordingToNeedConverterTest.cs" />
-    <Compile Include="ns2009\SimpleNonRepeatedConverterTest.cs" />
-    <Compile Include="ns2009\TwoDaysRepeatedConverterTest.cs" />
-    <Compile Include="ns2009\ValidatorTest.cs" />
-    <Compile Include="ns2009\WeeklyMorningNoonEveningNightConverterTest.cs" />
-    <Compile Include="ns2009\WeeklyRepeatedConverterTest.cs" />
-    <Compile Include="ns20120601\DailyRepeatedConverterTest.cs" />
-    <Compile Include="ns20120601\DayInWeekConverterTest.cs" />
-    <Compile Include="ns20120601\LimitedNumberOfDaysConverterTest.cs" />
-    <Compile Include="ns20120601\LongTextComplexConverterTest.cs" />
-    <Compile Include="ns20120601\MorningNoonEveningNightConverterTest.cs" />
-    <Compile Include="ns20120601\MorningNoonEveningNightEyeOrEarConverterTest.cs" />
-    <Compile Include="ns20120601\MorningNoonEveningNightInNDaysConverterTest.cs" />
-    <Compile Include="ns20120601\RepeatedConverterTest.cs" />
-    <Compile Include="ns20120601\RepeatedEyeOrEarConverterTest.cs" />
-    <Compile Include="ns20120601\SimpleAccordingToNeedConverterTest.cs" />
-    <Compile Include="ns20120601\SimpleLimitedAccordingToNeedConverterTest.cs" />
-    <Compile Include="ns20130601\MultiplePeriodesTest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ns20120601\CombinedTwoPeriodesConverterTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\fmk-dosistiltekst-wrapper-net\fmk-dosistiltekst-wrapper-net.csproj">
-      <Project>{aa5c3041-d701-4146-b057-78bdeff46dc9}</Project>
+    <ProjectReference Include="../fmk-dosistiltekst-wrapper-net/fmk-dosistiltekst-wrapper-net.csproj">
       <Name>fmk-dosistiltekst-wrapper-net</Name>
     </ProjectReference>
   </ItemGroup>
-  <Choose>
-    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  
+    <ItemGroup>
+        <Compile Include="../*.cs" />
+        <Compile Include="../ns2009/*.cs" />
+        <Compile Include="../ns20120601/*.cs" />
+        <Compile Include="../ns20130601/*.cs" />
+    </ItemGroup>
 </Project>
