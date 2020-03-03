@@ -18,7 +18,7 @@
     </dependencies>
   </metadata>
     <files>
-        <file src="bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib" />
-        <file src="bin\Debug\netcoreapp2.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\netcoreapp2.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib" />
+        <file src="bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\net4.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib/net4.0" />
+        <file src="bin\Debug\netcoreapp2.0\fmk-dosistiltekst-wrapper-net.dll;bin\Debug\netcoreapp2.0\fmk-dosistiltekst-wrapper-net.pdb" target="lib/netcoreapp2.0" />
     </files>
 </package>

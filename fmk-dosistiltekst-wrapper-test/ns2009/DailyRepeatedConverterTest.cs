@@ -2,8 +2,9 @@
 using fmk_dosistiltekst_wrapper_net.vowrapper;
 using fmk_dosistiltekst_wrapper_net;
 using NUnit.Framework;
+using fmk_dosistiltekst_wrapper_test;
 
-namespace fmk_dosistiltekst_wrapper_test.ns2009
+namespace fmk_dosistiltekst_wrapper_net.ns2009
 {
     [TestFixture]
     public class DailyRepeatedConverterTest : AbstractDosageWrapperTest

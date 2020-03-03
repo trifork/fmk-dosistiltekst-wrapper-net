@@ -124,7 +124,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
 					DayWrapper.MakeDay(
 						3, 
 						TimedDoseWrapper.MakeDose(new LocalTime(11,25), 7.0, false)))));
-        Console.WriteLine(DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
 		AssertLongTextEquals(dosage);
         
 		Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));

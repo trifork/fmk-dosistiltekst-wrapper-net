@@ -51,11 +51,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             Assert.AreEqual(
                     1,
                     s.Days[0].NumberOfDoses);
-            Assert.AreEqual(
-                    "Doseringsforløbet starter fredag den 13. april 2012 kl. 20:06 og gentages hver dag:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   2 stk morgen",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
@@ -84,11 +80,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
             structureEnum.MoveNext();
             StructureWrapper s = structureEnum.Current;
             Assert.AreEqual(1, s.Days[0].AccordingToNeedDoses.Count);
-            Assert.AreEqual(
-                    "Doseringsforløbet starter fredag den 13. april 2012 kl. 20:06 og gentages hver dag:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   2 stk efter behov højst 1 gang daglig",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "SimpleLimitedAccordingToNeedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));

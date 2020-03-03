@@ -52,17 +52,10 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                             7,
                             MorningDoseWrapper.MakeDose(1.0), 	// Torsdag
                             EveningDoseWrapper.MakeDose(1.0)))));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "WeeklyRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter fredag den 8. juni 2012, forløbet gentages hver uge, og ophører mandag den 31. december 2012.\n" +
-                    "Bemærk at doseringen har et komplekst forløb:\n" +
-                     "   Doseringsforløb:\n" +
-                     "   Torsdag: 1 stk morgen + 1 stk aften\n" +
-                     "   Fredag: 1 stk morgen + 1 stk aften\n" +
-                     "   Søndag: 1 stk morgen + 1 stk aften.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
             Assert.AreEqual(
                     6 / 7.0,
                     DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value,
