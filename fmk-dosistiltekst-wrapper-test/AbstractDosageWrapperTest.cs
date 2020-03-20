@@ -47,7 +47,7 @@ namespace fmk_dosistiltekst_wrapper_test
             if (!File.Exists(filename))
             {
                 // Jenkins path
-                filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../../fmk-dosistiltekst-wrapper/teststrings/longtext/" + testnamespace + "/" + testclass + "/"  + callerName + ".txt";    
+                filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../fmk-dosistiltekst-wrapper/workspace/teststrings/longtext/" + testnamespace + "/" + testclass + "/"  + callerName + ".txt";    
             }   
             
             var reader = File.OpenText(filename);
