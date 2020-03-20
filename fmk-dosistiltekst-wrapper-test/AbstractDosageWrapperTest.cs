@@ -35,15 +35,19 @@ namespace fmk_dosistiltekst_wrapper_test
 
         public void AssertLongTextEquals(DosageWrapper dosage, [CallerFilePathAttribute] string callerFilepath = "",  [CallerMemberName] string callerName = "")
         {
-            String testclass = Path.GetFileNameWithoutExtension(callerFilepath);
+            string testclass = Path.GetFileNameWithoutExtension(callerFilepath);
+            var pathElements = callerFilepath.Split(Path.DirectorySeparatorChar).ToList();
+            
+            string testnamespace = pathElements[pathElements.Count - 2];
+
             // Local devel path
 
-            var filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../fmk-dosistiltekst-wrapper/teststrings/longtext/" + testclass + "/" + callerName + ".txt";  
+            var filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../fmk-dosistiltekst-wrapper/teststrings/longtext/" + testnamespace + "/" + testclass + "/" + callerName + ".txt";  
 
             if (!File.Exists(filename))
             {
                 // Jenkins path
-                filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../../fmk-dosistiltekst-wrapper/teststrings/longtext/" + callerName + ".txt";    
+                filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../../fmk-dosistiltekst-wrapper/teststrings/longtext/" + testnamespace + "/" + testclass + "/"  + callerName + ".txt";    
             }   
             
             var reader = File.OpenText(filename);

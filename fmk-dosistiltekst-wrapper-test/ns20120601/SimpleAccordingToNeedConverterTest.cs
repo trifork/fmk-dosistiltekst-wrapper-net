@@ -39,32 +39,6 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
     {
 
         [Test]
-        public void testUnits()
-        {
-            DosageWrapper dosage =
-                DosageWrapper.MakeDosage(
-                    StructuresWrapper.MakeStructures(
-                        UnitOrUnitsWrapper.MakeUnits("tablet", "tabletter"),
-                        StructureWrapper.MakeStructure(
-                            0, null, DateOrDateTimeWrapper.MakeDate("2011-01-01"), DateOrDateTimeWrapper.MakeDate("2011-01-11"),
-                            DayWrapper.MakeDay(0,
-                                PlainDoseWrapper.MakeDose(2.0, true)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Efter behov: 2 tabletter efter behov",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual(
-                    "SimpleAccordingToNeedConverterImpl",
-                    DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "2 tabletter efter behov",
-                    DosisTilTekstWrapper.ConvertShortText(dosage));
-            Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
-            Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
-        }
-
-        [Test]
         public void testAccordingToNeed()
         {
             DosageWrapper dosage =
@@ -75,14 +49,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                             0, null, DateOrDateTimeWrapper.MakeDate("2011-01-01"), DateOrDateTimeWrapper.MakeDate("2011-01-11"),
                             DayWrapper.MakeDay(0,
                                 PlainDoseWrapper.MakeDose(2.0, true)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Efter behov: 2 tabletter efter behov",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual(
-                    "SimpleAccordingToNeedConverterImpl",
-                    DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "2 tabletter efter behov",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
@@ -102,11 +69,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                             DayWrapper.MakeDay(0,
                                 PlainDoseWrapper.MakeDose(2.0, true),
                                 PlainDoseWrapper.MakeDose(2.0, true)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter onsdag den 1. januar 2014, gentages hver dag, og ophører onsdag den 31. december 2014:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Efter behov: 2 tabletter efter behov 2 gange",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -124,11 +87,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                             DayWrapper.MakeDay(1,
                                 MorningDoseWrapper.MakeDose(2.0, true),
                                 EveningDoseWrapper.MakeDose(2.0, true)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører tirsdag den 11. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   2 tabletter morgen efter behov + 2 tabletter aften efter behov",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "MorningNoonEveningNightConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));

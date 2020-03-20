@@ -46,8 +46,6 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
         [Test]
         public void testTwoFollwingPeriodes()
         {
-
-            //		for(int i = 0; i < 10000; i++) {
             DosageWrapper dosage = DosageWrapper.MakeDosage(
                 StructuresWrapper.MakeStructures(
                     UnitOrUnitsWrapper.MakeUnits("tablet", "tabletter"),
@@ -75,24 +73,10 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                         )
                     )
                 );
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, og ophører mandag den 3. juni 2013.\n" +
-                "Bemærk at doseringen varierer:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. juni 2013: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "   Søndag den 2. juni 2013: 2 tabletter morgen + 2 tabletter aften\n" +
-                "   Mandag den 3. juni 2013: 2 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 tablet morgen",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
-            //		}
         }
 
         [Test]
@@ -116,17 +100,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                         )
                     )
                 );
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, gentages hver dag, og ophører mandag den 3. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013, gentages hver dag, og ophører mandag den 10. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 tablet morgen",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -153,17 +127,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                         )
                     )
                 );
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, forløbet gentages hver 2. dag, og ophører mandag den 3. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   Dag 1: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013, gentages hver dag, og ophører mandag den 10. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 tablet morgen",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -193,21 +157,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                         )
                     )
                 );
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, forløbet gentages efter 3 dage, og ophører søndag den 9. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. juni 2013: 3 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter søndag den 9. juni 2013, gentages hver dag, og ophører tirsdag den 18. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   2 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 18. juni 2013, gentages hver dag, og ophører torsdag den 27. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 tablet morgen",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -237,67 +187,11 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
 
                     StructureWrapper.MakeStructure(
                         1, null, DateOrDateTimeWrapper.MakeDate("2013-06-04"), null)));
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, og ophører mandag den 3. juni 2013.\n" +
-                "Bemærk at doseringen varierer:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. juni 2013: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "   Søndag den 2. juni 2013: 2 tabletter morgen + 2 tabletter aften\n" +
-                "   Mandag den 3. juni 2013: 2 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013:\n" +
-                "   Bemærk: skal ikke anvendes i denne periode!",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
         }
-
-        [Test]
-        public void testEmptyStructure()
-        {
-            DosageWrapper dosage = DosageWrapper.MakeDosage(
-                StructuresWrapper.MakeStructures(
-                    UnitOrUnitsWrapper.MakeUnits("tablet", "tabletter"),
-                    StructureWrapper.MakeStructure(
-                        0, null, DateOrDateTimeWrapper.MakeDate("2013-06-01"), DateOrDateTimeWrapper.MakeDate("2013-06-3"),
-                        DayWrapper.MakeDay(
-                            1,
-                            MorningDoseWrapper.MakeDose(2.0),
-                            NoonDoseWrapper.MakeDose(2.0),
-                            EveningDoseWrapper.MakeDose(2.0)),
-                        DayWrapper.MakeDay(
-                            2,
-                            MorningDoseWrapper.MakeDose(2.0),
-                            EveningDoseWrapper.MakeDose(2.0)),
-                        DayWrapper.MakeDay(
-                            3,
-                            MorningDoseWrapper.MakeDose(2.0))),
-
-
-                    StructureWrapper.MakeStructure(
-                        1, null, DateOrDateTimeWrapper.MakeDate("2013-06-04"), null)));
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, og ophører mandag den 3. juni 2013.\n" +
-                "Bemærk at doseringen varierer:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. juni 2013: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "   Søndag den 2. juni 2013: 2 tabletter morgen + 2 tabletter aften\n" +
-                "   Mandag den 3. juni 2013: 2 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013:\n" +
-                "   Bemærk: skal ikke anvendes i denne periode!",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
-            Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
-        }
-
-
 
         [Test]
         public void testTwoNotFollwingPeriodes()
@@ -329,20 +223,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                         )
                     )
                 );
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder, bemærk at der er overlappende perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013 og ophører efter det angivne forløb.\n" +
-                "Bemærk at doseringen varierer:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. juni 2013: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "   Søndag den 2. juni 2013: 2 tabletter morgen + 2 tabletter aften\n" +
-                "   Mandag den 3. juni 2013: 2 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 tablet morgen",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -386,24 +267,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
 
                 );
 
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder, bemærk at der er overlappende perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013, og ophører mandag den 3. juni 2013.\n" +
-                "Bemærk at doseringen varierer:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. juni 2013: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                "   Søndag den 2. juni 2013: 2 tabletter morgen + 2 tabletter aften\n" +
-                "   Mandag den 3. juni 2013: 2 tabletter morgen\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. juni 2013:\n" +
-                "   Doseringsforløb:\n" +
-                "   Efter behov: 2 tabletter efter behov.\n   Bemærk: ved smerter\n" +
-                "\n" +
-                "Doseringsforløbet starter tirsdag den 4. juni 2013 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 tablet morgen",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -417,11 +281,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                     DateOrDateTimeWrapper.MakeDate("2013-06-01"), DateOrDateTimeWrapper.MakeDate("2013-06-03"),
                     "Efter aftale"));
 
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. juni 2013 og ophører mandag den 3. juni 2013.\n" +
-                "   Doseringsforløb:\n" +
-                "   Efter aftale",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("FreeTextConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -465,24 +325,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                     );
 
 
-            Assert.AreEqual(
-                    "Doseringen indeholder flere perioder, bemærk at der er overlappende perioder:\n" +
-                    "\n" +
-                    "Doseringsforløbet starter lørdag den 1. juni 2013 kl. 08:00, og ophører mandag den 3. juni 2013 kl. 10:00.\n" +
-                    "Bemærk at doseringen varierer:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. juni 2013: 2 tabletter morgen + 2 tabletter middag + 2 tabletter aften\n" +
-                    "   Søndag den 2. juni 2013: 2 tabletter morgen + 2 tabletter aften\n" +
-                    "   Mandag den 3. juni 2013: 2 tabletter morgen\n" +
-                    "\n" +
-                    "Doseringsforløbet starter lørdag den 1. juni 2013 kl. 14:20:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Efter behov: 2 tabletter efter behov.\n   Bemærk: ved smerter\n" +
-                    "\n" +
-                    "Doseringsforløbet starter tirsdag den 4. juni 2013 kl. 10:30, gentages hver dag, og ophører torsdag den 6. juni 2013 kl. 15:30:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   1 tablet morgen",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
         }
@@ -495,11 +338,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                     DateOrDateTimeWrapper.MakeDate("2013-06-01"), DateOrDateTimeWrapper.MakeDate("2013-06-01"),
                     "Efter aftale"));
 
-            Assert.AreEqual(
-                "Doseringen foretages kun lørdag den 1. juni 2013.\n" +
-                "   Dosering:\n" +
-                "   Efter aftale",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("FreeTextConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -513,11 +352,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                     DateOrDateTimeWrapper.MakeDate("2013-06-01"), null,
                     "Efter aftale"));
 
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. juni 2013.\n" +
-                "   Doseringsforløb:\n" +
-                "   Efter aftale",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("FreeTextConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -531,11 +366,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                     null, DateOrDateTimeWrapper.MakeDate("2013-06-03"),
                     "Efter aftale"));
 
-            Assert.AreEqual(
-                "Doseringsforløbet ophører mandag den 3. juni 2013.\n" +
-                "   Doseringsforløb:\n" +
-                "   Efter aftale",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("FreeTextConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -548,11 +379,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                 AdministrationAccordingToSchemaWrapper.makeAdministrationAccordingToSchema(
                     DateOrDateTimeWrapper.MakeDate("2013-06-01"), DateOrDateTimeWrapper.MakeDate("2013-06-03")));
 
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. juni 2013 og ophører mandag den 3. juni 2013.\n" +
-                "   Doseringsforløb:\n" +
-                "   Dosering efter skriftlig anvisning",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("AdministrationAccordingToSchemaConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -565,11 +392,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                 AdministrationAccordingToSchemaWrapper.makeAdministrationAccordingToSchema(
                     DateOrDateTimeWrapper.MakeDate("2013-06-01"), DateOrDateTimeWrapper.MakeDate("2013-06-01")));
 
-            Assert.AreEqual(
-                "Doseringen foretages kun lørdag den 1. juni 2013.\n" +
-                "   Dosering:\n" +
-                "   Dosering efter skriftlig anvisning",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("AdministrationAccordingToSchemaConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -582,11 +405,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                 AdministrationAccordingToSchemaWrapper.makeAdministrationAccordingToSchema(
                     DateOrDateTimeWrapper.MakeDate("2013-06-01"), null));
 
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. juni 2013.\n" +
-                "   Doseringsforløb:\n" +
-                "   Dosering efter skriftlig anvisning",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("AdministrationAccordingToSchemaConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -599,11 +418,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
                 AdministrationAccordingToSchemaWrapper.makeAdministrationAccordingToSchema(
                     null, DateOrDateTimeWrapper.MakeDate("2013-06-03")));
 
-            Assert.AreEqual(
-                "Doseringsforløbet ophører mandag den 3. juni 2013.\n" +
-                "   Doseringsforløb:\n" +
-                "   Dosering efter skriftlig anvisning",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual("AdministrationAccordingToSchemaConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Unspecified, DosisTilTekstWrapper.GetDosageType(dosage));

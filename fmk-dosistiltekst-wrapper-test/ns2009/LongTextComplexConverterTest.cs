@@ -475,7 +475,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                         1,
                         PlainDoseWrapper.MakeDose(1.0, true)))));
             AssertLongTextEquals(dosage);
-            Assert.AreEqual("1 tablet efter behov, højst 1 gang daglig", DosisTilTekstWrapper.ConvertShortText(dosage));
+            Assert.AreEqual("1 tablet efter behov, højst 1 gang dagligt", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }
@@ -493,7 +493,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                             PlainDoseWrapper.MakeDose(2.0, true)))));
             AssertLongTextEquals(dosage);   
             Assert.AreEqual("SimpleLimitedAccordingToNeedConverterImpl", DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual("2 stk efter behov, højst 1 gang daglig", DosisTilTekstWrapper.ConvertShortText(dosage));
+            Assert.AreEqual("2 stk efter behov, højst 1 gang dagligt", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }

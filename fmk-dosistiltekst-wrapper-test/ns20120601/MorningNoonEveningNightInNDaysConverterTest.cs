@@ -61,20 +61,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "DefaultLongTextConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, og ophører onsdag den 5. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 1 tablet morgen\n" +
-                    "   Søndag den 2. januar 2011: 1 tablet morgen\n" +
-                    "   Mandag den 3. januar 2011: 1 tablet morgen\n" +
-                    "   Tirsdag den 4. januar 2011: 1 tablet morgen\n" +
-                    "   Onsdag den 5. januar 2011: 1 tablet morgen.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "MorningNoonEveningNightInNDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet morgen.\n   Bemærk: ved måltid i 5 dage",
+                    "1 tablet morgen i 5 dage.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     1.0,
@@ -109,20 +101,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "DefaultLongTextConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, og ophører onsdag den 5. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 1 tablet morgen efter behov højst 1 gang\n" +
-                    "   Søndag den 2. januar 2011: 1 tablet morgen efter behov højst 1 gang\n" +
-                    "   Mandag den 3. januar 2011: 1 tablet morgen efter behov højst 1 gang\n" +
-                    "   Tirsdag den 4. januar 2011: 1 tablet morgen efter behov højst 1 gang\n" +
-                    "   Onsdag den 5. januar 2011: 1 tablet morgen efter behov højst 1 gang.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "MorningNoonEveningNightInNDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet morgen efter behov.\n   Bemærk: ved måltid i 5 dage",
+                    "1 tablet morgen efter behov i 5 dage.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));

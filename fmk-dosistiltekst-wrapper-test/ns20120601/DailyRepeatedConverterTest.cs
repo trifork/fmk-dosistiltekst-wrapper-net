@@ -54,16 +54,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "DailyRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   1 tablet + 1 tablet + 1 tablet efter behov.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "ParacetamolConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 tablet 2-3 gange daglig.\n   Bemærk: ved måltid",
+                    "1 tablet 2-3 gange daglig.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -82,22 +78,16 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                         DayWrapper.MakeDay(
                             1,
                             PlainDoseWrapper.MakeDose(1.0, false),
-                            PlainDoseWrapper.MakeDose(1.0, false),
-                            PlainDoseWrapper.MakeDose(1.0, true)))));
-            Assert.AreEqual(
-                    "DailyRepeatedConverterImpl",
-                    DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   1 tablet + 1 tablet + 1 tablet efter behov.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual(
-                    "ParacetamolConverterImpl",
-                    DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "1 tablet 2-3 gange daglig.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertShortText(dosage));
+                            PlainDoseWrapper.MakeDose(1.0, false))),
+                    StructureWrapper.MakeStructure(
+                        1,
+                        "ved måltid",
+                        DateOrDateTimeWrapper.MakeDate("2011-01-01"), DateOrDateTimeWrapper.MakeDate("2011-01-30"),
+                        DayWrapper.MakeDay(
+                            1,
+                            PlainDoseWrapper.MakeDose(1.0, true)))
+                            ));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.Combined, DosisTilTekstWrapper.GetDosageType(dosage));
         }
@@ -119,24 +109,24 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                             TimedDoseWrapper.MakeDose(new LocalTime(8, 00), 1.0, false),
                             TimedDoseWrapper.MakeDose(new LocalTime(12, 00), 1.0, false),
                             TimedDoseWrapper.MakeDose(new LocalTime(16, 00), 1.0, false),
-                            TimedDoseWrapper.MakeDose(new LocalTime(20, 00), 1.0, false),
+                            TimedDoseWrapper.MakeDose(new LocalTime(20, 00), 1.0, false)
+                        )
+                    ),
+                StructureWrapper.MakeStructure(
+                        1,
+                        null,
+                        DateOrDateTimeWrapper.MakeDate("2011-01-01"), null, //DateOrDateTimeWrapper.MakeDate("2011-01-01"), 
+                        DayWrapper.MakeDay(
+                            1,
                             PlainDoseWrapper.MakeDose(1.0, true),
                             PlainDoseWrapper.MakeDose(1.0, true),
                             PlainDoseWrapper.MakeDose(1.0, true)
                         )
                     )
-                )
+)
             );
 
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   1 tablet kl. 08:00 + 1 tablet kl. 12:00 + 1 tablet kl. 16:00 + 1 tablet kl. 20:00 + 1 tablet efter behov + 1 tablet efter behov + 1 tablet efter behov",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
-
-            Assert.AreEqual(
-                "DailyRepeatedConverterImpl",
-                DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
+            AssertLongTextEquals(dosage);
             string shorttext = DosisTilTekstWrapper.ConvertShortText(dosage);
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage, 1000));	/* no known converter */
             Assert.IsNull(DosisTilTekstWrapper.GetShortTextConverterClassName(dosage)); /* no known converter */
@@ -160,9 +150,9 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
                             )
                     ));
 
+
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            string longText = DosisTilTekstWrapper.ConvertLongText(dosage);
-            Assert.IsTrue(longText.Contains("12 ml 1 gang daglig"));
+            AssertLongTextEquals(dosage);
         }
 
     }

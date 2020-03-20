@@ -59,19 +59,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                             4,
                             PlainDoseWrapper.MakeDose(4.0),
                             PlainDoseWrapper.MakeDose(4.0)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, og ophører tirsdag den 4. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4 måleskefulde 2 gange\n" +
-                    "   Søndag den 2. januar 2011: 4 måleskefulde 2 gange\n" +
-                    "   Mandag den 3. januar 2011: 4 måleskefulde 2 gange\n" +
-                    "   Tirsdag den 4. januar 2011: 4 måleskefulde 2 gange.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 måleskefulde 2 gange daglig i 4 dage.\n   Bemærk: ved måltid",
+                    "4 måleskefulde 2 gange daglig i 4 dage.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(
                     8.0,
@@ -104,14 +97,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                             4,
                             PlainDoseWrapper.MakeDose(4.0, true),
                             PlainDoseWrapper.MakeDose(4.0, true)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011, og ophører tirsdag den 4. januar 2011:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4 måleskefulde efter behov højst 2 gange\n" +
-                    "   Søndag den 2. januar 2011: 4 måleskefulde efter behov højst 2 gange\n" +
-                    "   Mandag den 3. januar 2011: 4 måleskefulde efter behov højst 2 gange\n" +
-                    "   Tirsdag den 4. januar 2011: 4 måleskefulde efter behov højst 2 gange.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }
@@ -127,16 +113,12 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                         DayWrapper.MakeDay(
                             1,
                             PlainDoseWrapper.MakeDose(4.0)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011 og ophører efter det angivne forløb:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Lørdag den 1. januar 2011: 4 tabletter.\n   Bemærk: ved måltid",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "LimitedNumberOfDaysConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "4 tabletter 1 gang.\n   Bemærk: ved måltid",
+                    "4 tabletter 1 gang.\nBemærk: ved måltid",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.AreEqual(4.0, DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value, 0.000000001);
             Assert.AreEqual(DosageType.OneTime, DosisTilTekstWrapper.GetDosageType(dosage));

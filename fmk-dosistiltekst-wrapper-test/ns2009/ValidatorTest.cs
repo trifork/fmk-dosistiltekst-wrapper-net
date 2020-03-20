@@ -85,7 +85,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     "SimpleLimitedAccordingToNeedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "2 stk efter behov, højst 1 gang daglig",
+                    "2 stk efter behov, højst 1 gang dagligt",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsNull(DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value);
         }

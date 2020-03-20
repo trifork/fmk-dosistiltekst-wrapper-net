@@ -31,7 +31,7 @@ using fmk_dosistiltekst_wrapper_net.vowrapper;
  * dk.medicinkortet.fmkdosistiltekstwrapper.ns2009 package. 
  */
 namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
-    public class SimpleLimitedAccordingToNeedConverterTest: DosisTilTekstWrapper
+    public class SimpleLimitedAccordingToNeedConverterTest: AbstractDosageWrapperTest
     {
 
         [Test]
@@ -45,15 +45,11 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
                             1, null, DateOrDateTimeWrapper.MakeDate("2014-01-01"), DateOrDateTimeWrapper.MakeDate("2014-12-31"),
                             DayWrapper.MakeDay(1,
                                 PlainDoseWrapper.MakeDose(1.0, true)))));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter onsdag den 1. januar 2014, gentages hver dag, og ophører onsdag den 31. december 2014:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   1 påsmøring efter behov højst 1 gang daglig",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "SimpleLimitedAccordingToNeedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
-            Assert.AreEqual("1 påsmøring efter behov, højst 1 gang daglig", DosisTilTekstWrapper.ConvertShortText(dosage));
+            Assert.AreEqual("1 påsmøring efter behov, højst 1 gang dagligt", DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
         }

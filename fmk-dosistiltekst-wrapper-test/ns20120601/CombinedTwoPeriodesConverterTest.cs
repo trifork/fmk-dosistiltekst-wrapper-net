@@ -37,17 +37,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
             Assert.AreEqual(
                 "DefaultMultiPeriodeLongTextConverterImpl",
                 DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringen foretages kun lørdag den 1. januar 2011:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. januar 2011: 1 dråbe 4 gange\n" +
-                "\n" +
-                "Doseringsforløbet starter søndag den 2. januar 2011 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 dråbe 2 gange daglig",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "CombinedTwoPeriodesConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
@@ -91,19 +81,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601 {
             Assert.AreEqual(
                 "DefaultMultiPeriodeLongTextConverterImpl",
                 DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                "Doseringen indeholder flere perioder:\n" +
-                "\n" +
-                "Doseringsforløbet starter lørdag den 1. januar 2011, og ophører mandag den 3. januar 2011:\n" +
-                "   Doseringsforløb:\n" +
-                "   Lørdag den 1. januar 2011: 2 dråber morgen + 2 dråber aften\n" +
-                "   Søndag den 2. januar 2011: 2 dråber morgen + 2 dråber aften\n" +
-                "   Mandag den 3. januar 2011: 2 dråber morgen + 2 dråber aften\n" +
-                "\n" +
-                "Doseringsforløbet starter søndag den 2. januar 2011 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 dråbe morgen + 1 dråbe aften",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                     "CombinedTwoPeriodesConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));

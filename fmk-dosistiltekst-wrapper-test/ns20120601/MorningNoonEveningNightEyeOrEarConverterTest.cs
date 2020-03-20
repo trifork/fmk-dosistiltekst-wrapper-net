@@ -51,11 +51,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns20120601
             Assert.AreEqual(
                     "DailyRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører søndag den 30. januar 2011:\n" +
-                "   Doseringsforløb:\n" +
-                "   2 dråber morgen + 2 dråber aften.\n   Bemærk: 1 i hvert øje",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
             Assert.AreEqual(
                 "MorningNoonEveningNightEyeOrEarConverterImpl",
                 DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));

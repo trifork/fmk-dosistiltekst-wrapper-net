@@ -70,7 +70,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "SimpleLimitedAccordingToNeedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 pust efter behov, højst 1 gang daglig.\nBemærk: ved anfald",
+                    "1 pust efter behov, højst 1 gang dagligt.\nBemærk: ved anfald",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));
@@ -92,7 +92,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009 {
                     "SimpleLimitedAccordingToNeedConverterImpl",
                     DosisTilTekstWrapper.GetShortTextConverterClassName(dosage));
             Assert.AreEqual(
-                    "1 stk efter behov, højst 1 gang daglig",
+                    "1 stk efter behov, højst 1 gang dagligt",
                     DosisTilTekstWrapper.ConvertShortText(dosage));
             Assert.IsTrue(DosisTilTekstWrapper.CalculateDailyDosis(dosage).IsNone());
             Assert.AreEqual(DosageType.AccordingToNeed, DosisTilTekstWrapper.GetDosageType(dosage));

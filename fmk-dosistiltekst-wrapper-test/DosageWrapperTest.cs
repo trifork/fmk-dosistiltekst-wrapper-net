@@ -26,26 +26,23 @@ namespace fmk_dosistiltekst_wrapper_test
                                 PlainDoseWrapper.MakeDose(4.0)))));
 
             string shortText = DosisTilTekstWrapper.ConvertShortText(dosage);
-            Assert.AreEqual("4 stk 2 gange daglig.\n   Bemærk: mod smerter", shortText);
+            Assert.AreEqual("4 stk 2 gange daglig.\nBemærk: mod smerter", shortText);
 
             Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   4 stk 2 gange daglig.\n   Bemærk: mod smerter",
+                "Dosering fra d. 1. jan. 2011:\n" +
+                "4 stk 2 gange hver dag\nBemærk: mod smerter",
                 DosisTilTekstWrapper.ConvertLongText(dosage));
 
             DosageTranslationCombined combined = DosisTilTekstWrapper.ConvertCombined(dosage);
-            Assert.AreEqual("4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.CombinedTranslation.ShortText);
+            Assert.AreEqual("4 stk 2 gange daglig.\nBemærk: mod smerter", combined.CombinedTranslation.ShortText);
             Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.CombinedTranslation.LongText);
+                    "Dosering fra d. 1. jan. 2011:\n" +
+                    "4 stk 2 gange hver dag\nBemærk: mod smerter", combined.CombinedTranslation.LongText);
             Assert.AreEqual(1, combined.PeriodTranslations.Count);
-            Assert.AreEqual("4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.PeriodTranslations[0].ShortText);
+            Assert.AreEqual("4 stk 2 gange daglig.\nBemærk: mod smerter", combined.PeriodTranslations[0].ShortText);
             Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   4 stk 2 gange daglig.\n   Bemærk: mod smerter", combined.PeriodTranslations[0].LongText);
+                    "Dosering fra d. 1. jan. 2011:\n" +
+                    "4 stk 2 gange hver dag\nBemærk: mod smerter", combined.PeriodTranslations[0].LongText);
         }
 
         [Test]
@@ -61,11 +58,7 @@ namespace fmk_dosistiltekst_wrapper_test
                             DayWrapper.MakeDay(1,
                                     PlainDoseWrapper.MakeDose(4.0),
                                     PlainDoseWrapper.MakeDose(4.0, true)))));
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. januar 2011 og gentages hver dag:\n" +
-                "   Doseringsforløb:\n" +
-                "   4 stk + 4 stk efter behov.\n   Bemærk: mod smerter",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
         }
 
         [Test]
@@ -82,13 +75,7 @@ namespace fmk_dosistiltekst_wrapper_test
                                 PlainDoseWrapper.MakeDose(1.0)),
                             DayWrapper.MakeDay(2,
                                 PlainDoseWrapper.MakeDose(2.0)))));
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. januar 2011, forløbet gentages hver 2. dag, og ophører fredag den 14. januar 2011.\n" +
-                "Bemærk at doseringen varierer:\n" +
-                "   Doseringsforløb:\n" +
-                "   Dag 1: 1 stk\n" +
-                "   Dag 2: 2 stk.\n   Bemærk: mod smerter",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
         }
 
         [Test]
@@ -106,11 +93,7 @@ namespace fmk_dosistiltekst_wrapper_test
                             NoonDoseWrapper.MakeDose(1.0),
                             EveningDoseWrapper.MakeDose(1.0),
                             NightDoseWrapper.MakeDose(1.0)))));
-            Assert.AreEqual(
-                "Doseringsforløbet starter lørdag den 1. januar 2011, gentages hver dag, og ophører fredag den 14. januar 2011:\n" +
-                "   Doseringsforløb:\n" +
-                "   1 stk morgen + 1 stk middag + 1 stk aften + 1 stk nat.\n   Bemærk: mod smerter",
-                DosisTilTekstWrapper.ConvertLongText(dosage));
+            AssertLongTextEquals(dosage);
         }
 
         [Test]
@@ -143,9 +126,8 @@ namespace fmk_dosistiltekst_wrapper_test
             DosageTranslationCombined combined = DosisTilTekstWrapper.ConvertCombined(dosage);
             Assert.AreEqual("Bare tag rigeligt", combined.CombinedTranslation.ShortText);
             Assert.AreEqual(
-                    "Doseringsforløbet starter lørdag den 1. januar 2011.\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Bare tag rigeligt", combined.CombinedTranslation.LongText);
+                    "Dosering fra d. 1. jan. 2011:\n" +
+                    "Bare tag rigeligt", combined.CombinedTranslation.LongText);
         }
 
         [Test]
@@ -238,16 +220,8 @@ namespace fmk_dosistiltekst_wrapper_test
             Assert.AreEqual(
                     "WeeklyRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
-            Assert.AreEqual(
-                    "Doseringsforløbet starter fredag den 8. juni 2012, forløbet gentages hver uge, og ophører mandag den 31. december 2012.\n" +
-                    "Bemærk at doseringen har et komplekst forløb:\n" +
-                    "   Doseringsforløb:\n" +
-                    "   Tirsdag: 1 stk\n" +
-                    "   Torsdag: 1 stk\n" +
-                    "   Fredag: 1 stk\n" +
-                    "   Søndag: 1 stk.\n   Bemærk: en meget, meget, meget laaaang supplerende tekst",
-                    DosisTilTekstWrapper.ConvertLongText(dosage));
-            Assert.AreEqual("1 stk tirsdag, torsdag, fredag og søndag hver uge.\n   Bemærk: en meget, meget, meget laaaang supplerende tekst", DosisTilTekstWrapper.ConvertShortText(dosage, 300));
+            AssertLongTextEquals(dosage);
+            Assert.AreEqual("1 stk tirsdag, torsdag, fredag og søndag hver uge.\nBemærk: en meget, meget, meget laaaang supplerende tekst", DosisTilTekstWrapper.ConvertShortText(dosage, 300));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
         }
     }
