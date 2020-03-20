@@ -28,7 +28,7 @@ namespace fmk_dosistiltekst_wrapper_test
             if (!File.Exists(filename))
             {
                 // Jenkins path
-                filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../../../fmk-dosis-til-tekst-ts/workspace/target/dosistiltekst.js";    
+                filename = TestContext.CurrentContext.WorkDirectory + "/../../../../../../fmk-dosis-til-tekst-ts/workspace/target/dosistiltekst.js";    
             }
             DosisTilTekstWrapper.Initialize(File.OpenText(filename));
         }
