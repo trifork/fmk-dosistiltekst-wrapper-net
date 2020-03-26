@@ -127,7 +127,7 @@ namespace fmk_dosistiltekst_wrapper_test
             Assert.AreEqual("Bare tag rigeligt", combined.CombinedTranslation.ShortText);
             Assert.AreEqual(
                     "Dosering fra d. 1. jan. 2011:\n" +
-                    "Bare tag rigeligt", combined.CombinedTranslation.LongText);
+                    "\"Bare tag rigeligt\"", combined.CombinedTranslation.LongText);
         }
 
         [Test]
