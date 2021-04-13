@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>FMKDosisTilTekstWrapper</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>Fælles Medicinkort: dosis-til-tekst wrapper for .NET</title>
     <authors>faellesmedicinkort</authors>
     <projectUrl>http://wiki.fmk.netic.dk/doku.php</projectUrl>

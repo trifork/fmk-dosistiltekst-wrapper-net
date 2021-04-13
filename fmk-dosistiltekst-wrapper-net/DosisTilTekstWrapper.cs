@@ -182,9 +182,12 @@ namespace fmk_dosistiltekst_wrapper_net
 
             // Remove 0-dosages (occurs in VKA dosages)
     
-            foreach (var structure in dosage.Structures.Structures)
+            if(dosage.Structures != null && dosage.Structures.Structures != null) 
             {
-                structure.Days.RemoveAll(d => d.NumberOfDoses == 0);
+                foreach (var structure in dosage.Structures.Structures)
+                {
+                    structure.Days.RemoveAll(d => d.NumberOfDoses == 0);
+                }
             }
 
             string json = "(unset)";

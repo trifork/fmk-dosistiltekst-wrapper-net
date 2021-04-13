@@ -16,7 +16,7 @@ namespace fmk_dosistiltekst_wrapper_test
             var res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", "tages med rigeligt vand", new[] { new DateTime(2017, 5, 17) }, new [] { new DateTime?(new DateTime(2017, 6, 1)) }, FMKVersion.FMK146, 1);
 		    Assert.IsNotNull(res);
             Assert.AreEqual("Dosering fra d. 17. maj 2017 til d. 1. juni 2017:\n" +
-			    "1 tablet efter behov højst 1 gang dagligt\nBemærk: tages med rigeligt vand", res.LongText);
+			    "1 tablet efter behov, højst 1 gang dagligt\nBemærk: tages med rigeligt vand", res.LongText);
             Assert.AreEqual("<m16:Dosage xsi:schemaLocation=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../2015/06/01/DosageForRequest.xsd\" xmlns:m16=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><m16:UnitTexts source=\"Doseringsforslag\"><m16:Singular>tablet</m16:Singular><m16:Plural>tabletter</m16:Plural></m16:UnitTexts><m16:StructuresAccordingToNeed><m16:Structure><m16:IterationInterval>1</m16:IterationInterval><m16:StartDate>2017-05-17</m16:StartDate><m16:EndDate>2017-06-01</m16:EndDate><m16:SupplementaryText>tages med rigeligt vand</m16:SupplementaryText><m16:Day><m16:Number>1</m16:Number><m16:Dose><m16:Quantity>1</m16:Quantity></m16:Dose></m16:Day></m16:Structure></m16:StructuresAccordingToNeed></m16:Dosage>", res.XmlSnippet);
 	    }
 
@@ -26,7 +26,7 @@ namespace fmk_dosistiltekst_wrapper_test
             var res = DosisTilTekstWrapper.GetDosageProposalResult("PN", "1", "1", "tablet", "tabletter", "tages med rigeligt vand", new[] { new DateTime(2017, 5, 17) }, new DateTime?[] { null }, FMKVersion.FMK146, 1);
             Assert.IsNotNull(res);
             Assert.AreEqual("Dosering fra d. 17. maj 2017:\n" +
-                "1 tablet efter behov højst 1 gang dagligt\nBemærk: tages med rigeligt vand", res.LongText);
+                "1 tablet efter behov, højst 1 gang dagligt\nBemærk: tages med rigeligt vand", res.LongText);
             Assert.AreEqual("<m16:Dosage xsi:schemaLocation=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../2015/06/01/DosageForRequest.xsd\" xmlns:m16=\"http://www.dkma.dk/medicinecard/xml.schema/2015/06/01\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><m16:UnitTexts source=\"Doseringsforslag\"><m16:Singular>tablet</m16:Singular><m16:Plural>tabletter</m16:Plural></m16:UnitTexts><m16:StructuresAccordingToNeed><m16:Structure><m16:IterationInterval>1</m16:IterationInterval><m16:StartDate>2017-05-17</m16:StartDate><m16:DosageEndingUndetermined/><m16:SupplementaryText>tages med rigeligt vand</m16:SupplementaryText><m16:Day><m16:Number>1</m16:Number><m16:Dose><m16:Quantity>1</m16:Quantity></m16:Dose></m16:Day></m16:Structure></m16:StructuresAccordingToNeed></m16:Dosage>", res.XmlSnippet);
         }
 
@@ -102,11 +102,11 @@ namespace fmk_dosistiltekst_wrapper_test
 		
 			Assert.AreEqual("Dosering fra d. 1. jan. 2010 til d. 31. jan. 2010:\n" +
             "1 tablet morgen, 2 tabletter middag, 3 tabletter aften og 4 tabletter nat - hver dag\nBemærk: tages med rigeligt vand\n\n" +
+            "Dosering fra d. 1. feb. 2010 til d. 28. feb. 2010 - gentages hver 2. dag:\n" +
+            "Dag 1: 2 tabletter efter behov, højst 1 gang dagligt\n" +
+            "Dag 2: 3 tabletter efter behov, højst 1 gang dagligt\nBemærk: tages med rigeligt vand\n\n"  +
 			"Dosering fra d. 1. mar. 2010 til d. 31. mar. 2010:\n" +
-            "2 tabletter hver dag\nBemærk: tages med rigeligt vand\n\n" +
-            "Dosering som gentages hver 2. dag fra d. 1. feb. 2010 til d. 28. feb. 2010:\n" +
-            "Dag 1: 2 tabletter efter behov højst 1 gang dagligt\n" +
-            "Dag 2: 3 tabletter efter behov højst 1 gang dagligt\nBemærk: tages med rigeligt vand" 
+            "2 tabletter hver dag\nBemærk: tages med rigeligt vand\n\n"
             , res.LongText);
 	    }
     }

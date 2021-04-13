@@ -221,7 +221,7 @@ namespace fmk_dosistiltekst_wrapper_test
                     "WeeklyRepeatedConverterImpl",
                     DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
             AssertLongTextEquals(dosage);
-            Assert.AreEqual("1 stk tirsdag, torsdag, fredag og søndag hver uge.\nBemærk: en meget, meget, meget laaaang supplerende tekst", DosisTilTekstWrapper.ConvertShortText(dosage, 300));
+            Assert.AreEqual("1 stk tirsdag, torsdag, fredag og søndag hver uge.\nBemærk: en meget, meget, meget laaaang supplerende tekst", DosisTilTekstWrapper.ConvertShortText(dosage, 400));
             Assert.IsNull(DosisTilTekstWrapper.ConvertShortText(dosage));
         }
     }
