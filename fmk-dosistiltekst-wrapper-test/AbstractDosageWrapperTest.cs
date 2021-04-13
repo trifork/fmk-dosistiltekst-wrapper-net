@@ -33,7 +33,7 @@ namespace fmk_dosistiltekst_wrapper_test
             DosisTilTekstWrapper.Initialize(File.OpenText(filename));
         }
 
-        public void AssertLongTextEquals(DosageWrapper dosage, [CallerFilePathAttribute] string callerFilepath = "",  [CallerMemberName] string callerName = "")
+        public void AssertLongTextEquals(DosageWrapper dosage, TextOptions textOptions = TextOptions.STANDARD, [CallerFilePathAttribute] string callerFilepath = "",  [CallerMemberName] string callerName = "")
         {
             string testclass = Path.GetFileNameWithoutExtension(callerFilepath);
             var pathElements = callerFilepath.Split(Path.DirectorySeparatorChar).ToList();
@@ -52,7 +52,7 @@ namespace fmk_dosistiltekst_wrapper_test
             
             var reader = File.OpenText(filename);
             var expectedResult = reader.ReadToEnd();
-            Assert.AreEqual(expectedResult, DosisTilTekstWrapper.ConvertLongText(dosage));
+            Assert.AreEqual(expectedResult, DosisTilTekstWrapper.ConvertLongText(dosage, textOptions));
         }
         
     }

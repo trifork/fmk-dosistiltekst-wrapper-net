@@ -18,7 +18,10 @@ namespace fmk_dosistiltekst_wrapper_net
         FMK140,
         FMK142,
         FMK144,
-        FMK146
+        FMK144E2,
+        FMK144E4,
+        FMK146,
+        FMK146E2
     };
 
     public class DosisTilTekstWrapper
@@ -38,6 +41,12 @@ namespace fmk_dosistiltekst_wrapper_net
         private static JsValue dosageType144Func = null;
         private static JsValue combinedTextConverterFunc = null;
         private static Engine engine = null;
+
+    public enum TextOptions {
+        STANDARD,
+        VKA,
+        VKA_WITH_MARKUP
+    }
 
         public static void Initialize(StreamReader reader)
         {
@@ -163,7 +172,7 @@ namespace fmk_dosistiltekst_wrapper_net
             };
         }
 
-        public static String ConvertLongText(DosageWrapper dosage)
+        public static String ConvertLongText(DosageWrapper dosage, TextOptions options = TextOptions.STANDARD)
         {
 
             if (longTextConverterFunc == null)
@@ -171,9 +180,16 @@ namespace fmk_dosistiltekst_wrapper_net
                 throw new Exception("Initialize must be called before calling other methods");
             }
 
+            // Remove 0-dosages (occurs in VKA dosages)
+    
+            foreach (var structure in dosage.Structures.Structures)
+            {
+                structure.Days.RemoveAll(d => d.NumberOfDoses == 0);
+            }
+
             string json = "(unset)";
             json = JsonConvert.SerializeObject(dosage, new DateSerializer());
-            JsValue res = res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) });
+            JsValue res = longTextConverterFunc.Invoke(longTextConverter, new[] { new JsValue(json) , new JsValue(options.ToString()) });
             return res.IsNull() ? null : res.AsString();
         }
 

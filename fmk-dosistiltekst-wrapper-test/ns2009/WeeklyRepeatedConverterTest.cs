@@ -67,6 +67,7 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     0.000000001);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
         }
+        
 
         [Test]
         public void testWeeklyOnceEveryTwoDays()
@@ -97,6 +98,42 @@ namespace fmk_dosistiltekst_wrapper_net.ns2009
                     DosisTilTekstWrapper.CalculateDailyDosis(dosage).Value.Value,
                     0.000000001);
             Assert.AreEqual(DosageType.Temporary, DosisTilTekstWrapper.GetDosageType(dosage));
+        }
+
+         [Test]
+        public void testWeeklyVKAWithZeroDosages()
+        {
+            DosageWrapper dosage = DosageWrapper.MakeDosage(
+                StructuresWrapper.MakeStructures(
+                    UnitOrUnitsWrapper.MakeUnit("stk"),
+                    StructureWrapper.MakeStructure(
+                        7, "ved måltid", DateOrDateTimeWrapper.MakeDate("2012-06-08"), DateOrDateTimeWrapper.MakeDate("2012-12-31"),
+                        DayWrapper.MakeDay(
+                            1,
+                            PlainDoseWrapper.MakeDose(0.0)),
+                        DayWrapper.MakeDay(
+                            2,
+                            PlainDoseWrapper.MakeDose(0.0)),
+                        DayWrapper.MakeDay(
+                            3,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            4,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            5,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            6,
+                            PlainDoseWrapper.MakeDose(1.0)),
+                        DayWrapper.MakeDay(
+                            7,
+                            PlainDoseWrapper.MakeDose(1.0)))));
+            Assert.AreEqual(
+                    "WeeklyRepeatedConverterImpl",
+                    DosisTilTekstWrapper.GetLongTextConverterClassName(dosage));
+            AssertLongTextEquals(dosage, TextOptions.STANDARD);
+            
         }
     }
 }

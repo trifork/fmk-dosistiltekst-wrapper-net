@@ -40,6 +40,64 @@ Desuden er der også mulighed for at hente kort og lang tekst + daglig dosis hhv
 ```C#
 DosageTranslationCombined combined = DosisTilTekstWrapper.ConvertCombined(dosage);
 ```
+
+#### VKA doseringer
+Der er tilføjet mulighed for at hente en særlig formatteret lang doseringstekst til brug ved VKA-doseringer, der opsætter VKA-ugeskemaer på en anden måde, end de lange doseringstekster ellers vises, herunder inkl. 0-doseringer:
+```
+DosageWrapper dosage = DosageWrapper.MakeDosage(
+        StructuresWrapper.MakeStructures(
+            UnitOrUnitsWrapper.MakeUnit("stk"),
+            StructureWrapper.MakeStructure(
+                7, "ved måltid", DateOrDateTimeWrapper.MakeDate("2012-06-08"), DateOrDateTimeWrapper.MakeDate("2012-12-31"),
+                DayWrapper.MakeDay(
+                    1,
+                    PlainDoseWrapper.MakeDose(0.0)),
+                DayWrapper.MakeDay(
+                    2,
+                    PlainDoseWrapper.MakeDose(0.0)),
+                DayWrapper.MakeDay(
+                    3,
+                    PlainDoseWrapper.MakeDose(1.0)),
+                DayWrapper.MakeDay(
+                    4,
+                    PlainDoseWrapper.MakeDose(1.0)),
+                DayWrapper.MakeDay(
+                    5,
+                    PlainDoseWrapper.MakeDose(1.0)),
+                DayWrapper.MakeDay(
+                    6,
+                    PlainDoseWrapper.MakeDose(1.0)),
+                DayWrapper.MakeDay(
+                    7,
+                    PlainDoseWrapper.MakeDose(1.0)))));
+
+string longText = DosisTilTekstWrapper.ConvertLongText(dosage, TextOptions.VKA);                    
+```
+Dette resulterer i en lang doseringstekst på flg. form:
+
+```
+Dosering fra d. 8. juni 2012 til d. 31. dec. 2012 - gentages hver uge:
+Mandag: 1 stk
+Tirsdag: 1 stk
+Onsdag: 1 stk
+Torsdag: 1 stk
+Fredag: 0 stk
+Lørdag: 0 stk
+Søndag: 1 stk
+Bemærk: ved måltid
+```
+Uden TextOptions-argumentet, havde doseringsteksten set således ud, d.v.s. uden 0-doseringer:
+```
+Dosering fra d. 8. juni 2012 til d. 31. dec. 2012 - gentages hver uge:
+Mandag: 1 stk
+Tirsdag: 1 stk
+Onsdag: 1 stk
+Torsdag: 1 stk
+Søndag: 1 stk
+Bemærk: ved måltid
+```
+Der er ikke noget krav om, at 0-doseringerne skal anvendes ved kald til dosis-til-tekst. Hvis TextOptions.VKA parameteren anvendes, indsættes evt. manglende 0-doseringer automatisk i ugeskemaet.
+
 ### XML generering ud fra doseringsforslag
 
 Eksempel på anvendelse:
@@ -77,3 +135,4 @@ Eksempel på anvendelse med flere doseringsperioder og med længere kort doserin
         new[] { new DateTime?(new DateTime(2010, 1, 31)), new DateTime?(new DateTime(2010, 2, 28)), new DateTime?(new DateTime(2010, 3, 31)) },
         FMKVersion.FMK146, 1, 10000);
 ```				
+
